@@ -25,8 +25,8 @@
             vm.filteredUsers = [];
             for (var i = 0; i < this.users.length; i++) {
                 var user = this.users[i];
-                if (user.firstname.toLowerCase().indexOf(filter) >= 0 ||
-                    user.lastname.toLowerCase().indexOf(filter) >= 0) {
+                if (user.firstName.toLowerCase().indexOf(filter) >= 0 ||
+                    user.lastName.toLowerCase().indexOf(filter) >= 0) {
                     vm.filteredUsers.push(user);
                 }
             }

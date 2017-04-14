@@ -4,10 +4,11 @@ using AutoMapper;
 using Domain.Identity;
 using Interfaces.UOW;
 using WebApi.Models.Users;
+using System;
 
 namespace WebApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UsersController : ApiController
     {
         private readonly IUow _uow;
@@ -39,37 +40,40 @@ namespace WebApi.Controllers
             return Ok(_autoMapper.Map<User, UserDto>(user));
         }
 
-        //// PUT: api/Users/5
-        //[HttpPut]
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutUser(int id, User user)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // PUT: api/Users/5
+        [HttpPut]
+        public IHttpActionResult PutUser(int id, User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    if (id != user.UserId)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    _uow.Users.Update(user);
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+            _uow.Users.Update(user);
 
-        //    try
-        //    {
-        //        _uow.Commit();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!UserExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            return InternalServerError();
-        //        }
-        //    }
+            try
+            {
+                _uow.Commit();
+            }
+            catch (Exception e)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return InternalServerError();
+                }
+
+
+            }
+            return Ok();
+        }
 
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
@@ -116,9 +120,9 @@ namespace WebApi.Controllers
         //    base.Dispose(disposing);
         //}
 
-        //private bool UserExists(int id)
-        //{
-        //    return _uow.Users.Count(e => e.UserId == id) > 0;
-        //}
+        private bool UserExists(int id)
+        {
+            return _uow.Users.GetById() == null;
+        }
     }
 }

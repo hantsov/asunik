@@ -33,6 +33,11 @@
                 controller: "SignupController",
                 controllerAs: "vm"
         })
+        .when("/courses", {
+            templateUrl: "app/courses/courses.html",
+            controller: "CoursesController",
+            controllerAs: "vm"
+        })
         .otherwise({
             redirectTo: '/'
         });

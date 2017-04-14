@@ -36,7 +36,7 @@
 
             $http.post(tokenAddress, data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
 
-                localStorageService.set('authorizationData', { token: response.access_token, username: signinData.username });
+                localStorageService.set('authorizationData', { token: response.data.access_token, username: signinData.username });
 
                 shared.authentication.isAuth = true;
                 shared.authentication.username = signinData.username;
@@ -67,6 +67,7 @@
             if (authData) {
                 shared.authentication.isAuth = true;
                 shared.authentication.username = authData.username;
+                shared.authentication.token = authData.token;   
             }
 
         };
