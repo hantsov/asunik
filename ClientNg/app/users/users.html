@@ -1,0 +1,28 @@
+﻿<div>
+    <input type="text" placeholder="Search" class="input-lg form-control" ng-model="usersFilter" ng-change="vm.filterUsers(usersFilter)"/>
+    <div id="userAccordion" role="tablist" aria-multiselectable="true" ng-repeat="item in vm.filteredUsers | orderBy:'+lastname' | limitTo: 50">
+        <div class="card">
+            <div class="card-header" role="tab" id="userHeader{{$index}}">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#userAccordion" data-target="#userContent{{$index}}" aria-expanded="false" aria-controls="userContent{{$index}}">
+                        {{item.firstName + ", " + item.lastName}}
+                    </a>
+                </h5>
+            </div>
+            <div id="userContent{{$index}}" class="collapse" role="tabpanel" aria-labelledby="userHeader{{$index}}">
+                <div class="card-block">
+                    <table class="table table-bordered table-hover">
+                        <tr ng-repeat="(key, value) in item">
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center" colspan="2"><a class="btn btn-primary btn-md" ng-href="#!users/edit/{{item.id}}">Edit</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

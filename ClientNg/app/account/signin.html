@@ -1,0 +1,11 @@
+﻿<form class="form-signin" ng-submit="vm.signIn()">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputUsername" class="sr-only">Username (or email)</label>
+    <input type="email" id="inputUsername" ng-model="vm.signinData.username" class="form-control" placeholder="Username (or email)" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" ng-model="vm.signinData.password" class="form-control" placeholder="Password" required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div ng-hide="vm.message == ''" ng-class="'alert alert-danger'">
+        {{vm.message}}
+    </div>
+</form>
