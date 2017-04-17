@@ -1,6 +1,6 @@
 ﻿<div class="row">
     <div class="col-centered">
-        <form ng-submit="vm.createOrUpdateUser()">
+        <form ng-submit="vm.updateUser()">
             <div class="form-group">
                 <label for="iFirstname">Firstname</label>
                 <input id="iFirstname" type="text" ng-model="vm.user.firstName" class="form-control" placeholder="Firstname" required="" autofocus="" />
@@ -11,20 +11,11 @@
             </div>
             <div class="form-group">
                 <label for="iEmail">Email</label>
-                <input id="iEmail" type="text" ng-model="vm.user.email" class="form-control" placeholder="Email" required="" autofocus="" />
+                <input id="iEmail" type="text" ng-model="vm.user.email" class="form-control" placeholder="Email" required="" autofocus=""/>
             </div>
-            <!--<div class="form-group">
-                <label for="iIdCode">Id code</label>
-                <input id="iIdCode" type="text" ng-model="vm.user.idCode" class="form-control" placeholder="idcode" required="" autofocus="" />
+            <div ng-hide="vm.message == ''" ng-class="(vm.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{vm.message}}
             </div>
-            <div class="form-group">
-                <label for="iCodeIssuer">Id code</label>
-                <input id="iCodeIssuer" type="text" ng-model="vm.user.codeIssuer" class="form-control" placeholder="idcodei" required="" autofocus="" />
-            </div>
-            <div class="form-group">
-                <label for="iBirthdate">Id code</label>
-                <input id="iBirthdate" type="text" ng-model="vm.user.birthdate" class="form-control" placeholder="birth" required="" autofocus=""/>
-            </div>-->
             <div>
                 <input class="btn btn-success btn-md" type="submit"/>
                 <a class="btn btn-primary btn-md" ng-href="#!users">Cancel</a>

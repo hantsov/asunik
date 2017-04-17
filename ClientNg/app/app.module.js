@@ -10,7 +10,7 @@
         $routeProvider
         .when("/", {
             templateUrl: "app/home/home.html",
-            controller: "MainController",
+            controller: "HomeController",
             controllerAs: "vm"
         })
         .when("/users", {
@@ -36,6 +36,10 @@
         .otherwise({
             redirectTo: '/'
         });
+    });
+
+    app.config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptorService');
     });
 
 })();

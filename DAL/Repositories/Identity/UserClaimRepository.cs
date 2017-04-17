@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Identity;
 using Interfaces;
-using Interfaces.Repositories;
 using Interfaces.Repositories.Identity;
 
-namespace DAL.Repositories
+namespace DAL.Repositories.Identity
 {
     public class UserClaimRepository :
         UserClaimRepository<int, Role, User, UserClaim, UserLogin, UserRole>, IUserClaimRepository

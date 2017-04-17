@@ -12,6 +12,8 @@ using DAL.EFConfiguration;
 using DAL.EFConfiguration.Identity;
 using DAL.Helpers;
 using Domain;
+using Domain.Course;
+using Domain.Event;
 using Domain.Identity;
 using Interfaces;
 using Interfaces.UOW;
@@ -22,18 +24,6 @@ namespace DAL
 {
     public class DatabaseContext : DbContext, IDbContext
     {
-        // pläust
-        //        public DatabaseContext() : base("name=DbConnectionString")
-        //        {
-        //            Database.SetInitializer(new DbInitializer());
-        //#if DEBUG
-        //            Database.Log = s => Trace.WriteLine(s);
-        //#else
-        //            Database.Log = s => Console.WriteLine(s);
-        //#endif
-        //        }
-
-        //        public DbSet<User> Users { get; set; }
         private readonly NLog.ILogger _logger;
         private readonly string _instanceId = Guid.NewGuid().ToString();
         private readonly IUserNameResolver _userNameResolver;
@@ -47,8 +37,6 @@ namespace DAL
 
             _logger.Debug("InstanceId: " + _instanceId);
 
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataBaseContext,Migrations.Configuration>());
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataBaseContext>());
             Database.SetInitializer(new DbInitializer());
 
 
@@ -57,27 +45,28 @@ namespace DAL
 #endif
             this.Database.Log = s => _logger.Info((s.Contains("SELECT") || s.Contains("UPDATE") || s.Contains("DELETE") || s.Contains("INSERT")) ? "\n" + s.Trim() : s.Trim());
 
-            //DbInterception.Add(new NLogCommandInterceptor(_logger));
-
-            //Database.SetInitializer(new DatabaseInitializer());
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataBaseContext>());
         }
 
         //hack for mvc scaffolding, paramaterles constructor is required
-        public DatabaseContext() : this(new UserNameResolver(() => "Anonymous") , NLog.LogManager.GetCurrentClassLogger())
+        public DatabaseContext() : this(new UserNameResolver(() => "Anonymous"), NLog.LogManager.GetCurrentClassLogger())
         {
 
         }
 
         // regular tables
         //public IDbSet<Person> Persons { get; set; }
-        
+
         // Identity tables, PK - int
         public IDbSet<Role> Roles { get; set; }
         public IDbSet<UserClaim> UserClaims { get; set; }
         public IDbSet<UserLogin> UserLogins { get; set; }
         public IDbSet<User> Users { get; set; }
         public IDbSet<UserRole> UserRoles { get; set; }
+
+        // non-identity tables
+        public IDbSet<Event> Events { get; set; }
+        public IDbSet<Course> Courses { get; set; }
+        public IDbSet<CourseMember> CourseMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -89,19 +78,15 @@ namespace DAL
             //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            // Identity, PK - string 
-            //modelBuilder.Configurations.Add(new RoleMap());
-            //modelBuilder.Configurations.Add(new UserClaimMap());
-            //modelBuilder.Configurations.Add(new UserLoginMap());
-            //modelBuilder.Configurations.Add(new UserMap());
-            //modelBuilder.Configurations.Add(new UserRoleMap());
-
             // Identity, PK - int 
             modelBuilder.Configurations.Add(new RoleMap());
             modelBuilder.Configurations.Add(new UserClaimMap());
             modelBuilder.Configurations.Add(new UserLoginMap());
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new UserRoleMap());
+
+            modelBuilder.Configurations.Add(new CourseMap());
+            modelBuilder.Configurations.Add(new CourseMemberMap());
 
             // convert all datetime and datetime? properties to datetime2 in ms sql
             // ms sql datetime has min value of 1753-01-01 00:00:00.000
@@ -112,6 +97,23 @@ namespace DAL
            .Where(x => x.GetCustomAttributes(false).OfType<DataTypeAttribute>()
            .Any(a => a.DataType == DataType.Date))
            .Configure(c => c.HasColumnType("date"));
+
+            // relationships
+            //modelBuilder.Entity<CourseMember>()
+            //    .HasRequired(t => t.Course)
+            //    .WithMany(t => t.Members);
+
+            //modelBuilder.Entity<CourseMember>()
+            //    .HasRequired(t => t.User)
+            //    .WithMany(t => t.Courses);
+            //.HasMany(t => t.)
+            //.WithMany(t => t.Courses)
+            //.Map(m =>
+            //{
+            //    m.ToTable("CourseInstructor");
+            //    m.MapLeftKey("CourseID");
+            //    m.MapRightKey("InstructorID");
+            //});
 
 
         }

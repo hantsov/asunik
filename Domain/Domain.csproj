@@ -54,12 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Course\Course.cs" />
+    <Compile Include="Course\CourseMember.cs" />
+    <Compile Include="Event\Event.cs" />
     <Compile Include="Identity\Role.cs" />
     <Compile Include="Identity\User.cs" />
     <Compile Include="Identity\UserClaim.cs" />
     <Compile Include="Identity\UserLogin.cs" />
     <Compile Include="Identity\UserRole.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

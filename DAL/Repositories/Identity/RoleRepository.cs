@@ -5,7 +5,7 @@ using Domain.Identity;
 using Interfaces;
 using Interfaces.Repositories.Identity;
 
-namespace DAL.Repositories
+namespace DAL.Repositories.Identity
 {
     public class RoleRepository : RoleRepository<int, Role, User, UserClaim, UserLogin, UserRole>,
         IRoleRepository

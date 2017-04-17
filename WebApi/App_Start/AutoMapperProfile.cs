@@ -1,6 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using AutoMapper;
+using Domain;
+using Domain.Course;
+using Domain.Event;
 using Domain.Identity;
+using WebApi.Models.Courses;
+using WebApi.Models.Events;
 using WebApi.Models.Users;
 
 namespace WebApi
@@ -11,6 +16,9 @@ namespace WebApi
         public AutoMapperProfile() : base(nameof(AutoMapperProfile))
         {
             CreateMap<User, UserDto>();
+            CreateMap<Event, EventDto>();
+            CreateMap<Course, CourseDto>();
+            CreateMap<CourseMember, CourseMemberDto>();
         }
     }
 }

@@ -6,7 +6,7 @@ using Domain.Identity;
 using Interfaces;
 using Interfaces.Repositories.Identity;
 
-namespace DAL.Repositories
+namespace DAL.Repositories.Identity
 {
     public class UserLoginepository :
         UserLoginRepository<int, Role, User, UserClaim, UserLogin, UserRole>, IUserLoginRepository

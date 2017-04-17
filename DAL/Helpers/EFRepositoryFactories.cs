@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Repositories;
+using DAL.Repositories.Identity;
 using Interfaces;
 using Interfaces.Repositories;
 using Interfaces.Repositories.Identity;
@@ -30,11 +31,15 @@ namespace DAL.Helpers
         {
             return new Dictionary<Type, Func<IDbContext, object>>
             {
+                // identity
                 {typeof (IUserRepository), dbContext => new UserRepository(dbContext)},
                 {typeof (IUserRoleRepository), dbContext => new UserRoleIntRepository(dbContext)},
                 {typeof (IUserClaimRepository), dbContext => new UserClaimRepository(dbContext)},
                 {typeof (IUserLoginRepository), dbContext => new UserLoginepository(dbContext)},
-                {typeof (IRoleRepository), dbContext => new RoleRepository(dbContext)}
+                {typeof (IRoleRepository), dbContext => new RoleRepository(dbContext)},
+
+                {typeof (IEventRepository), dbContext => new EventsRepository(dbContext)},
+                {typeof (ICourseRepository), dbContext => new CoursesRepository(dbContext)}
             };
         }
 

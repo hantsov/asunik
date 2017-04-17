@@ -8,10 +8,6 @@ namespace Interfaces.Repositories.Identity
     {
     }
 
-    //public interface IRoleRepository : IRoleRepository<string, Role>
-    //{
-    //}
-
     public interface IRoleRepository<in TKey, TRole> : IBaseRepository<TRole>
         where TRole : class, IRole<TKey>
     {

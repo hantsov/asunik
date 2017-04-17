@@ -7,13 +7,6 @@
     {
     }
 
-    ///// <summary>
-    /////     EntityType that represents a user belonging to a role, PK - string
-    ///// </summary>
-    //public class UserRole : UserRole<string, Role, Domain.User, UserClaim, UserLogin, UserRole>
-    //{
-    //}
-
     /// <summary>
     ///     EntityType that represents a user belonging to a role, generic
     ///     TKey - type for Id (string, int)

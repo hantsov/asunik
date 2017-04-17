@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .service('UsersService', usersService);
+        .service('usersService', usersService);
 
 
     function usersService($http) {
@@ -26,8 +26,6 @@
         };
 
         shared.createUser = function (user) {
-            console.log("in user service");
-            console.log(user);
             return $http.post(serviceAddress, user).then(function (response) {
                 console.log(response.data);
                 return response.data;
@@ -35,9 +33,7 @@
         }
 
         shared.updateUser = function (user) {
-            console.log("in user service");
-            console.log(user);
-            return $http.post(serviceAddress, user).then(function (response) {
+            return $http.put(serviceAddress + "/" + user.id, user).then(function (response) {
                 console.log(response.data);
                 return response.data;
             });

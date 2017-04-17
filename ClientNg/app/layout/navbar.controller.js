@@ -5,7 +5,7 @@
         .module('app')
         .controller('NavbarController', navbar);
 
-    navbar.$inject = ['$location', 'AccountService'];
+    navbar.$inject = ['$location', 'accountService'];
 
     function navbar($location, accountService) {
         var vm = this;
