@@ -16,6 +16,9 @@ namespace Domain.Course
 
         public string Level { get; set; }
 
+        [MaxLength(256)]
+        public string ImgLoc { get; set; }
+
         public virtual List<CourseMember> Members { get; set; }
 
     }

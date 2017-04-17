@@ -118,14 +118,16 @@ namespace DAL.Helpers
             {
                 Heading = "TestCourse",
                 Description = "123Description",
-                Level = "Mediocre"
+                Level = "Mediocre",
+                ImgLoc = "../../appContent/images/shred.jpg"
             });
 
             context.Courses.Add(new Course()
             {
                 Heading = "TestCourse2",
                 Description = "1234Description",
-                Level = "Expert"
+                Level = "Expert",
+                ImgLoc = "../../appContent/images/testcourse.jpg"
             });
 
             context.SaveChanges();

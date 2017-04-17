@@ -5,17 +5,16 @@
         .module('app')
         .controller('CoursesController', courses);
 
-	courses.$inject = ['$http'];
+	courses.$inject = ['$http', 'coursesService'];
 
-	function courses($http) {
+	function courses($http, coursesService) {
 		var vm = this;
-		vm.testdata = "testdata is balling out of control";
 		activate();
 
 		function activate() {
-			//usersService.getUser($routeParams.id).then(function (response) {
-			//	vm.user = response;
-			//});
+		    coursesService.getCourses().then(function (response) {
+				vm.courses = response;
+			});
 		}
 	}
 })();

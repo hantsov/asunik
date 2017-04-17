@@ -1,1 +1,13 @@
-﻿<p>{{vm.testdata}}</p>
+﻿<ul class="list-unstyled" ng-repeat="course in vm.courses">
+    <li class="media">
+        <img class="d-flex mr-3 img-fluid" style="max-height: 128px; max-width: 128px" ng-src="{{course.imgLoc}}" alt="Generic placeholder image">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1"><a ng-href="#">{{course.heading}}</a></h5>
+            <h6 class="mt-0 mb-1">Insctructor(s) ...</h6>
+            <p style="text-align: justify; padding: 10px">{{course.description}}</p>
+            <div>
+                
+            </div>
+        </div>
+    </li>
+</ul>

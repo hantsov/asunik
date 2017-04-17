@@ -120,11 +120,7 @@ namespace WebApi.Controllers
 
         private bool UserExists(int id)
         {
-<<<<<<< HEAD
             return _uow.Users.GetById(id) == null;
-=======
-            return _uow.Users.GetById() == null;
->>>>>>> 0b28b9500b5d38f882865e3c53cd3d69dd74e49d
         }
     }
 }

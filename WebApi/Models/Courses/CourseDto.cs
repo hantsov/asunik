@@ -19,6 +19,8 @@ namespace WebApi.Models.Courses
 
         public string Level { get; set; }
 
+        public string ImgLoc { get; set; }
+
         public List<CourseMemberDto> Members { get; set; }
     }
 }

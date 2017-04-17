@@ -72,12 +72,15 @@
     <Content Include="appContent\css\site.css" />
     <Content Include="appContent\images\exclamation.png" />
     <Content Include="appContent\images\home_backdrop.jpg" />
+    <Content Include="appContent\images\shred.jpg" />
+    <Content Include="appContent\images\testcourse.jpg" />
     <Content Include="app\account\account.service.js" />
     <Content Include="app\account\authInterceptor.service.js" />
     <Content Include="app\account\signin.controller.js" />
     <Content Include="app\account\signin.html" />
     <Content Include="app\account\signup.controller.js" />
     <Content Include="app\account\signup.html" />
+    <Content Include="app\courses\courses.service.js" />
     <Content Include="app\events\events.html" />
     <Content Include="app\home\events.service.js" />
     <Content Include="app\courses\courses.html" />
@@ -129,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.module.js" />
-    <Content Include="app\main.controller.js" />
     <Content Include="app\users\users.controller.js" />
     <Content Include="app\home\home.html" />
     <Content Include="index.html" />
