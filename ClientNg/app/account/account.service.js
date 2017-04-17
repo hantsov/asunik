@@ -67,6 +67,7 @@
             if (authData) {
                 shared.authentication.isAuth = true;
                 shared.authentication.username = authData.username;
+                shared.authentication.token = authData.token;   
             }
 
         };

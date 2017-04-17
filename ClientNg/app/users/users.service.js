@@ -6,19 +6,21 @@
         .service('usersService', usersService);
 
 
-    function usersService($http) {
+    function usersService($http, localStorageService) {
         var shared = this;
 
         var serviceAddress = "http://localhost:57953/api/users";
 
         shared.getUsers = function() {
-            return $http.get(serviceAddress).then(function(response) {
+            var token = localStorageService.get('authorizationData').token;
+            return $http.get(serviceAddress).then(function (response) {
                 //console.log(response.data);
                 return response.data;
             });
         };
 
         shared.getUser = function (userId) {
+            
             return $http.get(serviceAddress + "/" + userId).then(function (response) {
                 console.log(response.data);
                 return response.data;
