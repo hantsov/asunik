@@ -34,5 +34,18 @@
                 return response.data;
             });
         }
+
+        shared.registerToCourse = function (courseMember) {
+            return $http.get(serviceAddress).then(function (response) {
+                return response.data;
+            });
+            //return $http.put(getMemberServiceAddress(courseMember.id), courseMember).then(function (response) {
+            //    return response.data;
+            //});
+        }
+
+        function getMemberServiceAddress(courseId) {
+            return serviceAddress + "/" + courseId + "/members";
+        }
     }
 })();
