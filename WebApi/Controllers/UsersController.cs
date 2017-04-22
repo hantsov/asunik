@@ -7,10 +7,13 @@ using Domain.Identity;
 using Interfaces.UOW;
 using WebApi.Models.Users;
 using System;
+using WebApi.Models.Courses;
+using System.Linq;
 
 namespace WebApi.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
         private readonly IUow _uow;
@@ -74,6 +77,18 @@ namespace WebApi.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+
+        [Route("{id}/GetCourses")]
+        public IHttpActionResult GetUserCourseIds(int id)
+        {
+            //refactor this
+            return Ok(_autoMapper.Map<List<CourseDto>>(
+                _uow.Courses.All
+                .Where(x => x.Members
+                .Select(y => y.UserId.Equals(id)).FirstOrDefault()).ToList())
+                .Select(z => z.Id).ToList());
         }
 
         //// POST: api/Users

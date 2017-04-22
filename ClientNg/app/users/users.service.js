@@ -40,5 +40,14 @@
                 return response.data;
             });
         }
+
+        shared.getUserCourses = function (userId) {
+            return $http.get(serviceAddress + "/" + userId + "/getcourses").then(function (response) {
+                console.log(response.data);
+                //then get course name etc without getting other users info
+                //return listOfCourses;
+                return response.data;
+            });
+        }
     }
 })();

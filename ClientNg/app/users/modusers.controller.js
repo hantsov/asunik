@@ -19,6 +19,10 @@
                 vm.user = response;
                 nonModdedUser = angular.copy(response);
             });
+
+            usersService.getUserCourses($routeParams.id).then(function (response) {
+                vm.userCourses = response;
+            });
         }
 
         vm.updateUser = function () {
