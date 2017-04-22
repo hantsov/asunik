@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using Domain.Course;
 
-namespace WebApi.Models.Courses
+namespace WebApi.Models.Users
 {
-    public class CourseDto
+    public class UserCourseDto
     {
         public int Id { get; set; }
 
@@ -20,7 +19,5 @@ namespace WebApi.Models.Courses
         public string Level { get; set; }
 
         public string ImgLoc { get; set; }
-
-        public List<CoursesCourseMemberDto> Members { get; set; }
     }
 }

@@ -188,8 +188,10 @@
     <Compile Include="Models\Account\AccountBindingModels.cs" />
     <Compile Include="Models\Account\ApiAccountViewModels.cs" />
     <Compile Include="Models\Courses\CourseDto.cs" />
-    <Compile Include="Models\Courses\CourseMemberDto.cs" />
+    <Compile Include="Models\Courses\CoursesCourseMemberDto.cs" />
     <Compile Include="Models\Events\EventDto.cs" />
+    <Compile Include="Models\Users\UsersCourseMemberDto.cs" />
+    <Compile Include="Models\Users\UserCourseDto.cs" />
     <Compile Include="Models\Users\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

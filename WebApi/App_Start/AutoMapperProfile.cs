@@ -18,7 +18,9 @@ namespace WebApi
             CreateMap<User, UserDto>();
             CreateMap<Event, EventDto>();
             CreateMap<Course, CourseDto>();
-            CreateMap<CourseMember, CourseMemberDto>();
+            CreateMap<CourseMember, CoursesCourseMemberDto>();
+            CreateMap<CourseMember, UsersCourseMemberDto>();
+            CreateMap<Course, UserCourseDto>();
         }
     }
 }

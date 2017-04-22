@@ -80,15 +80,11 @@ namespace WebApi.Controllers
         }
 
 
-        [Route("{id}/GetCourses")]
-        public IHttpActionResult GetUserCourseIds(int id)
+        [Route("{id}/Courses")]
+        [HttpGet]
+        public IHttpActionResult GetCourses(int id)
         {
-            //refactor this
-            return Ok(_autoMapper.Map<List<CourseDto>>(
-                _uow.Courses.All
-                .Where(x => x.Members
-                .Select(y => y.UserId.Equals(id)).FirstOrDefault()).ToList())
-                .Select(z => z.Id).ToList());
+            return Ok(_autoMapper.Map<List<UsersCourseMemberDto>>(_uow.Users.GetById(id).Courses));
         }
 
         //// POST: api/Users
