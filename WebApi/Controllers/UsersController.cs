@@ -70,10 +70,7 @@ namespace WebApi.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    return InternalServerError();
-                }
+                return InternalServerError();
             }
 
             return StatusCode(HttpStatusCode.NoContent);

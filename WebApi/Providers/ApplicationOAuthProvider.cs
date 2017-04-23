@@ -48,7 +48,7 @@ namespace WebApi.Providers
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName);
+            AuthenticationProperties properties = CreateProperties(user);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
@@ -90,11 +90,12 @@ namespace WebApi.Providers
             return Task.FromResult<object>(null);
         }
 
-        public static AuthenticationProperties CreateProperties(string userName)
+        public static AuthenticationProperties CreateProperties(User user)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                {"userName", userName}
+                {"username", user.UserName},
+                {"userId", user.Id.ToString()}
             };
             return new AuthenticationProperties(data);
         }

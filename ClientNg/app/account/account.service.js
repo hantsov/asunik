@@ -5,9 +5,6 @@
         .module('app')
         .service('accountService', accountService);
 
-
-    //accountService.$inject = ['$http', 'localStorageService'];
-
     function accountService($http, $q, localStorageService) {
         var shared = this;
 
@@ -16,7 +13,8 @@
 
         shared.authentication = {
             isAuth: false,
-            username: ""
+            username: "",
+            userId: ""
         };
 
         shared.createAccount = function (registration) {
@@ -36,10 +34,11 @@
 
             $http.post(tokenAddress, data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
 
-                localStorageService.set('authorizationData', { token: response.data.access_token, username: signinData.username });
+                localStorageService.set('authorizationData', { token: response.data.access_token, username: response.data.username, userId: response.data.userId });
 
                 shared.authentication.isAuth = true;
                 shared.authentication.username = signinData.username;
+                shared.authentication.userId = signinData.id;
 
                 deferred.resolve(response);
 
@@ -67,6 +66,7 @@
             if (authData) {
                 shared.authentication.isAuth = true;
                 shared.authentication.username = authData.username;
+                shared.authentication.userId = authData.userId;
                 shared.authentication.token = authData.token;   
             }
 

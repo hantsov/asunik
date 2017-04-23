@@ -116,17 +116,22 @@ namespace DAL.Helpers
         {
             context.Courses.Add(new Course()
             {
-                Heading = "TestCourse",
-                Description = "123Description",
+                Heading = "Shred Guitar",
+                Description = "Shred guitar or shredding is a virtuoso lead guitar solo playing style for the guitar, based on various fast playing techniques." +
+                          "Speed Building, Legato, Tapping, [and] Sweep Picking techniques shredders need to know—sweep picking, tapping, legato playing, whammy bar tricks, speed riffing, [and] thrash chording." +
+                          " Shred guitarists use two- or three-octave scales, triads, or modes, played ascending and descending at a fast tempo.",
                 Level = "Mediocre",
                 ImgLoc = "../../appContent/images/shred.jpg"
             });
 
             context.Courses.Add(new Course()
             {
-                Heading = "TestCourse2",
-                Description = "1234Description",
-                Level = "Expert",
+                Heading = "English B2 -> C1",
+                Description = "English level C1 is the fifth level of English in the Common European Framework of Reference (CEFR)," +
+                              " a definition of different language levels written by the Council of Europe. In everyday speech, this level might be called “advanced”," +
+                              " and that is the official level descriptor for this level as well, also used by EFSET." +
+                              " At this level, students can function independently and with a great deal of precision on a wide variety of subjects and in almost any setting without any prior preparation.",
+                Level = "Advanced",
                 ImgLoc = "../../appContent/images/testcourse.jpg"
             });
 
@@ -134,14 +139,14 @@ namespace DAL.Helpers
 
             context.CourseMembers.Add(new CourseMember()
             {
-                Course = context.Courses.FirstOrDefault(c => c.Heading == "TestCourse"),
+                Course = context.Courses.FirstOrDefault(c => c.Heading == "Shred Guitar"),
                 User = context.Users.FirstOrDefault(u => u.UserName == "hardi@test.ee"),
                 MemberRole = "STUDENT"
             });
 
             context.CourseMembers.Add(new CourseMember()
             {
-                Course = context.Courses.FirstOrDefault(c => c.Heading == "TestCourse"),
+                Course = context.Courses.FirstOrDefault(c => c.Heading == "Shred Guitar"),
                 User = context.Users.FirstOrDefault(u => u.UserName == "juhan@test.ee"),
                 MemberRole = "STUDENT"
             });

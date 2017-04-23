@@ -81,12 +81,15 @@
     <Content Include="app\account\signup.controller.js" />
     <Content Include="app\account\signup.html" />
     <Content Include="app\courses\courses.service.js" />
+    <Content Include="app\courses\courses_confirm.html" />
     <Content Include="app\events\events.html" />
     <Content Include="app\home\events.service.js" />
     <Content Include="app\courses\courses.html" />
     <Content Include="app\layout\footer.html" />
     <Content Include="app\layout\navbar.controller.js" />
     <Content Include="app\layout\navbar.html" />
+    <Content Include="app\profile\profile.controller.js" />
+    <Content Include="app\profile\profile.html" />
     <Content Include="app\users\users.service.js" />
     <Content Include="app\users\user_edit.html" />
     <Content Include="Content\bootstrap-grid.css" />

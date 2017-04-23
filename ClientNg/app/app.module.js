@@ -38,6 +38,11 @@
             controller: "CoursesController",
             controllerAs: "vm"
         })
+        .when("/profile", {
+            templateUrl: "app/profile/profile.html",
+            controller: "ProfileController",
+            controllerAs: "vm"
+        })
         .otherwise({
             redirectTo: '/'
         });

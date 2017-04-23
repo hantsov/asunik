@@ -27,22 +27,6 @@ namespace Identity
         }
     }
 
-    ///// <summary>
-    /////     EntityFramework based user store implementation that supports IUserStore, IUserLoginStore, IUserClaimStore and
-    /////     IUserRoleStore. PK - string
-    ///// </summary>
-    //public class UserStore : UserStore<string, Role, User, UserClaim, UserLogin, UserRole,
-    //    IRoleRepository, IUserClaimRepository, IUserLoginRepository, IUserRepository, IUserRoleRepository>,
-    //    IUserStore<User>
-    //{
-    //    private readonly NLog.ILogger _logger;
-    //    public UserStore(IUow uow, ILogger logger)
-    //        : base(uow, logger)
-    //    {
-    //        _logger = logger;
-    //    }
-    //}
-
     /// <summary>
     ///     EntityFramework based user store implementation that supports IUserStore, IUserLoginStore, IUserClaimStore and
     ///     IUserRoleStore

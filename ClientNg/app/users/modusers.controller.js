@@ -40,6 +40,10 @@
             }
         };
 
+        vm.back = function() {
+            window.history.back();
+        }
+
         function setError(errorMsg) {
             vm.user = nonModdedUser;
             vm.savedSuccessfully = false;

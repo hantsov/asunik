@@ -14,7 +14,6 @@
         shared.getUsers = function() {
             var token = localStorageService.get('authorizationData').token;
             return $http.get(serviceAddress).then(function (response) {
-                //console.log(response.data);
                 return response.data;
             });
         };
@@ -29,14 +28,12 @@
 
         shared.createUser = function (user) {
             return $http.post(serviceAddress, user).then(function (response) {
-                console.log(response.data);
                 return response.data;
             });
         }
 
         shared.updateUser = function (user) {
             return $http.put(serviceAddress + "/" + user.id, user).then(function (response) {
-                console.log(response.data);
                 return response.data;
             });
         }
