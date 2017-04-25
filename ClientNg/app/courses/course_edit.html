@@ -1,0 +1,36 @@
+﻿
+<div class="row">
+    <div class="col-centered">
+        <form ng-submit="vm.updateUser()">
+            <div class="form-group">
+                <label for="iHeading">Firstname</label>
+                <input id="iHeading" type="text" ng-model="vm.user.firstName" class="form-control" placeholder="Firstname" required="" autofocus="" />
+            </div>
+            <div class="form-group">
+                <label for="iDescription">Lastname</label>
+                <textarea id="iDescription" rows="5" ng-model="vm.user.lastName" class="form-control" placeholder="Lastname" required="" autofocus=""></textarea>
+            </div>
+            <div class="form-group">
+                <label for="iLevel">Email</label>
+                <input id="iLevel" type="text" ng-model="vm.user.email" class="form-control" placeholder="Email" required="" autofocus=""/>
+            </div>
+           <div class="form-group">
+                <label for="iImgLoc">Email</label>
+                <input id="iImgLoc" type="text" ng-model="vm.user.email" class="form-control" placeholder="Email" required="" autofocus="" />
+            </div>
+            <div ng-hide="vm.message == ''" ng-class="(vm.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{vm.message}}
+            </div>
+            <div>
+                <input class="btn btn-success btn-md" type="submit" />
+                <input class="btn btn-primary btn-md" ng-click="vm.back()" type="button" value="Cancel" />
+            </div>
+            <h5>Course members</h5>
+            <div>
+                <ul class="list-group" ng-repeat="">
+                    <li class="list-group-item">Cras justo odio <button class="btn btn-success btn-md">Remove</button></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>

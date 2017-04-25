@@ -190,6 +190,7 @@
     <Compile Include="Models\Courses\CourseDto.cs" />
     <Compile Include="Models\Courses\CoursesCourseMemberDto.cs" />
     <Compile Include="Models\Courses\MemberRegistrationDto.cs" />
+    <Compile Include="Models\Errors\ErrorMessage.cs" />
     <Compile Include="Models\Events\EventDto.cs" />
     <Compile Include="Models\Users\UsersCourseMemberDto.cs" />
     <Compile Include="Models\Users\UserCourseDto.cs" />

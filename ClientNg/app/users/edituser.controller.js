@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .controller('ModUsersController', modusers);
+        .controller('EditUserController', edituser);
 
-    modusers.$inject = ['$http', '$scope', '$location', '$routeParams', 'usersService'];
+    edituser.$inject = ['$http', '$scope', '$location', '$routeParams', 'usersService'];
 
-    function modusers($http, $scope, $location, $routeParams, usersService) {
+    function edituser($http, $scope, $location, $routeParams, usersService) {
         var vm = this;
         var nonModdedUser = {};
         activate();

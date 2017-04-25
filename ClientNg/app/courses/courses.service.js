@@ -6,7 +6,7 @@
         .service('coursesService', coursesService);
 
 
-    function coursesService($http) {
+    function coursesService($http, accountService) {
         var shared = this;
 
         var serviceAddress = "http://localhost:57953/api/courses";
@@ -35,13 +35,14 @@
             });
         }
 
-        shared.registerToCourse = function (courseMember) {
-            return $http.get(serviceAddress).then(function (response) {
+        shared.registerToCourse = function (courseId) {
+            var userData = {
+                userId: accountService.authentication.userId,
+                memberRole: "STUDENT"
+            };
+            return $http.post(getMemberServiceAddress(courseId), userData).then(function (response) {
                 return response.data;
             });
-            //return $http.put(getMemberServiceAddress(courseMember.id), courseMember).then(function (response) {
-            //    return response.data;
-            //});
         }
 
         function getMemberServiceAddress(courseId) {

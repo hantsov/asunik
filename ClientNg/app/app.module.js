@@ -20,7 +20,7 @@
         })
         .when("/users/edit/:id", {
                 templateUrl: "app/users/user_edit.html",
-                controller: "ModUsersController",
+                controller: "EditUserController",
                 controllerAs: "vm"
         })
         .when("/signin", {
@@ -36,6 +36,11 @@
         .when("/courses", {
             templateUrl: "app/courses/courses.html",
             controller: "CoursesController",
+            controllerAs: "vm"
+        })
+        .when("/courses/edit/:id", {
+            templateUrl: "app/courses/courses_edit.html",
+            controller: "EditCourseController",
             controllerAs: "vm"
         })
         .when("/profile", {

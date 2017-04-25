@@ -17,33 +17,32 @@
 				vm.courses = response;
 		    });
 		    vm.modalMessage = '';
+		    vm.selectedCourseId = '';
 		}
 
 		var startTimer = function () {
 		    var timer = $timeout(function () {
 		        $timeout.cancel(timer);
-		        $location.path('/signin');
+		        $location.path('/profile');
 		    }, 2000);
 		}
 
+		vm.setSelectedCourse = function (courseId) {
+		    vm.modalMessage = '';
+	        vm.selectedCourseId = courseId;
+	    };
+
 		vm.register = function () {
 
-		    coursesService.registerToCourse("123").then(function (response) {
-
+		    coursesService.registerToCourse(vm.selectedCourseId).then(function (response) {
 		        vm.registeredSuccessfully = true;
-		        vm.modalMessage = "Registered successfully, you will be redicted to MyCourses page in 2 seconds.";
+		        vm.modalMessage = "Registered successfully, you will be redicted to profile page in 2 seconds.";
 		        startTimer();
 
 		    },
              function (response) {
                  vm.registeredSuccessfully = false;
-                 var errors = [];
-                 for (var key in response.data.modelState) {
-                     for (var i = 0; i < response.data.modelState[key].length; i++) {
-                         errors.push(response.data.modelState[key][i]);
-                     }
-                 }
-                 vm.modalMessage = "Failed to register due to:" + errors.join(' ');
+                 vm.modalMessage = "Failed to register due to:" + response.data.errors.join(' ');
              });
 		};
 	}

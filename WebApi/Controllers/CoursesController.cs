@@ -10,6 +10,7 @@ using Domain.Course;
 using Domain.Identity;
 using Interfaces.UOW;
 using WebApi.Models.Courses;
+using WebApi.Models.Errors;
 
 namespace WebApi.Controllers
 {
@@ -18,6 +19,7 @@ namespace WebApi.Controllers
     {
         private readonly IUow _uow;
         private readonly IMapper _autoMapper;
+        private readonly ErrorMessages _errorMessages = new ErrorMessages();
 
         public CoursesController(IUow uow, IMapper autoMapper)
         {
@@ -59,7 +61,8 @@ namespace WebApi.Controllers
 
             if (MemberExists(course.Id, user.Id))
             {
-                return BadRequest();
+                _errorMessages.Errors.Add("Already registered");
+                return Content(HttpStatusCode.BadRequest, _errorMessages);
             }
 
             course.Members.Add(new CourseMember()
