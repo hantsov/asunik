@@ -1,6 +1,8 @@
 ﻿#viewContainer {
     padding-top: 40px;
     padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-top: 40px;
     margin-bottom: 40px;
     background-color: rgb(238, 238, 238);
@@ -14,7 +16,6 @@
     margin: 0 auto;
 }
 
-/*body {
-    background: url('../images/home_backdrop.jpg') no-repeat center center fixed;
-    background-size: cover;
-}*/
+.btn-site {
+    width: 100px;
+}

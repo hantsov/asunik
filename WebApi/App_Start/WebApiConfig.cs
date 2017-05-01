@@ -33,6 +33,9 @@ namespace WebApi
             // ignore null objects
             jsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 
+            // helps with serializing references to other objects when dealing with EF POCO references
+            // GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
             //// change the DateTime format
             //jsonFormatter.SerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
 

@@ -5,7 +5,7 @@
         .module('app')
         .controller('SignupController', signup);
 
-    signup.$inject = ['$location', '$timeout', 'AccountService'];
+    signup.$inject = ['$location', '$timeout', 'accountService'];
 
     function signup($location, $timeout, accountService) {
         var vm = this;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Domain.Course;
 using Microsoft.AspNet.Identity;
 
 namespace Domain.Identity
@@ -49,6 +50,8 @@ namespace Domain.Identity
 
         //Additional (custom) properties
         //public virtual List<Person> Persons { get; set; }
+        public virtual List<CourseMember> Courses { get; set; }
+
 
     }
 

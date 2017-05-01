@@ -7,10 +7,6 @@ namespace Interfaces.Repositories.Identity
     {
     }
 
-    //public interface IUserRepository : IUserRepository<string, User>
-    //{
-    //}
-
     public interface IUserRepository<in TKey, TUser> : IBaseRepository<TUser>
         where TUser : class, IUser<TKey>
     {

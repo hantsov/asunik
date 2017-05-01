@@ -1,0 +1,26 @@
+﻿<div>
+    <h5>Personal data</h5>
+    <table class="table table-bordered table-hover">
+        <tr ng-repeat="(key, value) in vm.user">
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center" colspan="2"><a class="btn btn-primary btn-md" ng-href="#!users/edit/{{vm.user.id}}">Edit</a></td>
+        </tr>
+    </table>
+
+    <h5>My Courses</h5>
+    <ul class="list-unstyled" ng-repeat="courseData in vm.courses">
+        <li class="media">
+            <img class="d-flex mr-3 img-fluid" style="max-height: 128px; max-width: 128px" ng-src="{{courseData.course.imgLoc}}" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1"><a ng-href="#">{{courseData.course.heading}}</a></h5>
+                <h6 class="mt-0 mb-1">Insctructor(s) ...</h6>
+                <h6 class="mt-0 mb-1">Role: {{courseData.memberRole}}</h6>
+                <p style="text-align: justify; padding: 10px">{{courseData.course.description}}</p>
+            </div>
+        </li>
+    </ul>
+
+</div>

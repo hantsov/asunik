@@ -19,5 +19,9 @@ namespace Interfaces.UOW
         T GetRepository<T>() where T : class;
 
         IUserRepository Users { get; }
+        IRoleRepository Roles { get; }
+        IEventRepository Events { get; }
+        ICourseRepository Courses { get; }
+        ICourseMemberRepository CourseMembers { get; }
     }
 }

@@ -20,30 +20,6 @@ namespace Domain.Identity
         }
     }
 
-    ///// <summary>
-    /////     Represents a Role entity, PK - string
-    ///// </summary>
-    //public class Role : Role<string, Role, Domain.User, UserClaim, UserLogin, UserRole>
-    //{
-    //    /// <summary>
-    //    ///     Constructor, initializes Id with new Guid
-    //    /// </summary>
-    //    public Role()
-    //    {
-    //        Id = Guid.NewGuid().ToString();
-    //    }
-
-    //    /// <summary>
-    //    ///     Constructor
-    //    /// </summary>
-    //    /// <param name="roleName">name of the role</param>
-    //    public Role(string roleName)
-    //        : this()
-    //    {
-    //        Name = roleName;
-    //    }
-    //}
-
     public class Role<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole> : IRole<TKey>
         where TRole : Role<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole>
         where TUser : User<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole>

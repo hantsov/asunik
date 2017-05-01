@@ -1,0 +1,44 @@
+﻿
+<div ng-hide="!vm.isUserWithRequiredRoleForFeature('CourseEdit')" class="row">
+    <div class="col-centered course-edit">
+        <form ng-submit="vm.updateCourse()">
+            <h5>Course data</h5>
+            <div class="form-group">
+                <label for="iHeading">Heading</label>
+                <input id="iHeading" type="text" ng-model="vm.course.heading" class="form-control" placeholder="Firstname" required="" autofocus=""/>
+            </div>
+            <div class="form-group">
+                <label for="iDescription">Description</label>
+                <textarea id="iDescription" rows="10" ng-model="vm.course.description" class="form-control" placeholder="Lastname" required="" autofocus=""></textarea>
+            </div>
+            <div class="form-group">
+                <label for="iLevel">Level</label>
+                <input id="iLevel" type="text" ng-model="vm.course.level" class="form-control" placeholder="Email" required="" autofocus=""/>
+            </div>
+            <div class="form-group">
+                <label for="iImgLoc">Image location</label>
+                <input id="iImgLoc" type="text" ng-model="vm.course.imgLoc" class="form-control" placeholder="Email" required="" autofocus=""/>
+            </div>
+            <div ng-hide="vm.message == ''" ng-class="(vm.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{vm.message}}
+            </div>
+            <div class="text-center">
+                <input class="btn btn-success btn-md btn-site" type="submit"/>
+                <input class="btn btn-primary btn-md btn-site" ng-click="vm.back()" type="button" value="Cancel"/>
+            </div>
+        </form>
+        <br/>
+        <br/>
+        <h5>Course members</h5>
+        <br/>
+        <div>
+            <ul class="list-group" ng-repeat="member in vm.course.members">
+                <li class="list-group-item justify-content-between">
+                    <div class="col-4"><b>{{member.user.lastName + ", " + member.user.firstName}}</b></div>
+                    <div class="col-4"><b>Role: {{member.memberRole}}</b></div>
+                    <div class="col-4"><button ng-click="vm.removeMember(member.user.id)" class="btn btn-danger btn-md btn-site">Remove</button></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

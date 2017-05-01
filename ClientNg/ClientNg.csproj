@@ -66,19 +66,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="appContent\css\editform.css" />
+    <Content Include="appContent\css\course_edit.css" />
     <Content Include="appContent\css\home.css" />
     <Content Include="appContent\css\signform.css" />
     <Content Include="appContent\css\site.css" />
+    <Content Include="appContent\images\exclamation.png" />
     <Content Include="appContent\images\home_backdrop.jpg" />
+    <Content Include="appContent\images\shred.jpg" />
+    <Content Include="appContent\images\testcourse.jpg" />
     <Content Include="app\account\account.service.js" />
+    <Content Include="app\account\authInterceptor.service.js" />
     <Content Include="app\account\signin.controller.js" />
     <Content Include="app\account\signin.html" />
     <Content Include="app\account\signup.controller.js" />
     <Content Include="app\account\signup.html" />
+    <Content Include="app\courses\courses.service.js" />
+    <Content Include="app\courses\courses_confirm.html" />
+    <Content Include="app\courses\course_edit.html" />
+    <Content Include="app\courses\editcourse.controller.js" />
+    <Content Include="app\events\events.html" />
+    <Content Include="app\home\events.service.js" />
+    <Content Include="app\courses\courses.html" />
     <Content Include="app\layout\footer.html" />
     <Content Include="app\layout\navbar.controller.js" />
     <Content Include="app\layout\navbar.html" />
+    <Content Include="app\profile\profile.controller.js" />
+    <Content Include="app\profile\profile.html" />
     <Content Include="app\users\users.service.js" />
     <Content Include="app\users\user_edit.html" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -111,8 +124,10 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="app\users\modusers.controller.js" />
+    <Content Include="app\users\edituser.controller.js" />
     <Content Include="Scripts\angular-local-storage.min.js.map" />
+    <Content Include="app\home\home.controller.js" />
+    <Content Include="app\courses\courses.controller.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -122,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.module.js" />
-    <Content Include="app\main.controller.js" />
     <Content Include="app\users\users.controller.js" />
     <Content Include="app\home\home.html" />
     <Content Include="index.html" />

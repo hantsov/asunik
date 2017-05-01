@@ -9,7 +9,6 @@ namespace Interfaces.Repositories
         where T : class
     {
         // gett all records in table
-        //IQueryable<T> All { get; }
         List<T> All { get; }
 
         // get all records with filter

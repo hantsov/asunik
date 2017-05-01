@@ -10,7 +10,7 @@
         $routeProvider
         .when("/", {
             templateUrl: "app/home/home.html",
-            controller: "MainController",
+            controller: "HomeController",
             controllerAs: "vm"
         })
         .when("/users", {
@@ -20,7 +20,7 @@
         })
         .when("/users/edit/:id", {
                 templateUrl: "app/users/user_edit.html",
-                controller: "ModUsersController",
+                controller: "EditUserController",
                 controllerAs: "vm"
         })
         .when("/signin", {
@@ -33,9 +33,28 @@
                 controller: "SignupController",
                 controllerAs: "vm"
         })
+        .when("/courses", {
+            templateUrl: "app/courses/courses.html",
+            controller: "CoursesController",
+            controllerAs: "vm"
+        })
+        .when("/courses/edit/:id", {
+            templateUrl: "app/courses/course_edit.html",
+            controller: "EditCourseController",
+            controllerAs: "vm"
+        })
+        .when("/profile", {
+            templateUrl: "app/profile/profile.html",
+            controller: "ProfileController",
+            controllerAs: "vm"
+        })
         .otherwise({
             redirectTo: '/'
         });
+    });
+
+    app.config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptorService');
     });
 
 })();

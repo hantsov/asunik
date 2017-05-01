@@ -12,6 +12,9 @@ namespace DAL.EFConfiguration.Identity
             HasMany(u => u.Roles).WithRequired().HasForeignKey(ur => ur.UserId);
             HasMany(u => u.Claims).WithRequired().HasForeignKey(uc => uc.UserId);
             HasMany(u => u.Logins).WithRequired().HasForeignKey(ul => ul.UserId);
+
+            HasMany(u => u.Courses).WithOptional().HasForeignKey(cm => cm.UserId);
+
             Property(u => u.UserName)
                 .IsRequired()
                 .HasMaxLength(256)

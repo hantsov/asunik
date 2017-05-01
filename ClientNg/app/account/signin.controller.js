@@ -5,7 +5,7 @@
         .module('app')
         .controller('SigninController', signin);
 
-    signin.$inject = ['$location', 'AccountService']; 
+    signin.$inject = ['$location', 'accountService']; 
 
     function signin($location, accountService) {
         var vm = this;
