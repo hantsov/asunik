@@ -16,7 +16,6 @@
     margin: 0 auto;
 }
 
-/*body {
-    background: url('../images/home_backdrop.jpg') no-repeat center center fixed;
-    background-size: cover;
-}*/
+.btn-site {
+    width: 100px;
+}

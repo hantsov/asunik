@@ -187,6 +187,8 @@
     <Compile Include="Helpers\UserNameFactory.cs" />
     <Compile Include="Models\Account\AccountBindingModels.cs" />
     <Compile Include="Models\Account\ApiAccountViewModels.cs" />
+    <Compile Include="Models\Courses\UpdateCourseDto.cs" />
+    <Compile Include="Models\Users\UserRoleDto.cs" />
     <Compile Include="Models\Courses\CourseDto.cs" />
     <Compile Include="Models\Courses\CoursesCourseMemberDto.cs" />
     <Compile Include="Models\Courses\MemberRegistrationDto.cs" />

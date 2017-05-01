@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
+using AutoMapper;
 using Domain.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -11,12 +12,16 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using WebApi.Models.Account;
 
 namespace WebApi.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
+        // private readonly IMapper _autoMapper = GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMapper)) as IMapper;
 
         public ApplicationOAuthProvider(string publicClientId)
         {
@@ -24,7 +29,6 @@ namespace WebApi.Providers
             {
                 throw new ArgumentNullException("publicClientId");
             }
-
             _publicClientId = publicClientId;
         }
 
@@ -36,7 +40,6 @@ namespace WebApi.Providers
                 // context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             User user = await userManager.FindAsync(context.UserName, context.Password);
-
             if (user == null)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
@@ -60,7 +63,6 @@ namespace WebApi.Providers
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
-
             return Task.FromResult<object>(null);
         }
 
@@ -90,7 +92,7 @@ namespace WebApi.Providers
             return Task.FromResult<object>(null);
         }
 
-        public static AuthenticationProperties CreateProperties(User user)
+        public AuthenticationProperties CreateProperties(User user)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {

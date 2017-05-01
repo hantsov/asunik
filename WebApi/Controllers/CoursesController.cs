@@ -14,6 +14,7 @@ using WebApi.Models.Errors;
 
 namespace WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [RoutePrefix("api/Courses")]
     public class CoursesController : ApiController
     {
@@ -29,6 +30,7 @@ namespace WebApi.Controllers
 
         // GET: api/Courses
         [HttpGet]
+        [AllowAnonymous]
         public IHttpActionResult GetCourses()
         {
             return Ok(_autoMapper.Map<List<CourseDto>>(_uow.Courses.All));
@@ -36,6 +38,7 @@ namespace WebApi.Controllers
 
         // GET: api/Courses/5
         [HttpGet]
+        [AllowAnonymous]
         public IHttpActionResult GetCourse(int id)
         {
             Course course = _uow.Courses.GetById(id);
@@ -45,6 +48,41 @@ namespace WebApi.Controllers
             }
 
             return Ok(_autoMapper.Map<Course, CourseDto>(course));
+        }
+
+        // PUT: api/Courses/5
+        [HttpPut]
+        public IHttpActionResult PutCourse(int id, UpdateCourseDto course)
+        {
+            //if (!IsValidAuthorization(id))
+            //{
+            //    return Unauthorized();
+            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != course.Id)
+            {
+                return BadRequest();
+            }
+            var course1 =_autoMapper.Map<UpdateCourseDto, Course>(course);
+            _uow.Courses.Update(course1);
+            try
+            {
+                _uow.Commit();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CourseExists(id))
+                {
+                    return NotFound();
+                }
+                return InternalServerError();
+            }
+
+            return Ok();
         }
 
         // POST: api/Courses/5/Members
@@ -83,9 +121,51 @@ namespace WebApi.Controllers
             return Ok();
         }
 
+
+        // DELETE: api/Courses/5/Members/5
+        [Route("{id}/Members/{userId}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteMember(int id, int userId)
+        {
+            Course course = _uow.Courses.GetById(id);
+            User user = _uow.Users.GetById(userId);
+            if (course == null || user == null)
+            {
+                return NotFound();
+            }
+
+            if (!MemberExists(course.Id, user.Id))
+            {
+                return NotFound();
+            }
+            var courseMember = GetMember(course.Id, user.Id);
+            _uow.CourseMembers.Delete(courseMember);
+
+            try
+            {
+                _uow.Commit();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
+
+        private bool CourseExists(int id)
+        {
+            return _uow.Courses.GetById(id) == null;
+        }
+
         private bool MemberExists(int courseId, int userId)
         {
-            return _uow.Courses.GetById(courseId).Members.FirstOrDefault(m => m.UserId == userId) != null;
+            return GetMember(courseId, userId) != null;
+        }
+
+        private CourseMember GetMember(int courseId, int userId)
+        {
+            return _uow.Courses.GetById(courseId).Members.FirstOrDefault(m => m.UserId == userId);
         }
     }
 }

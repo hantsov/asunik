@@ -9,6 +9,8 @@ using WebApi.Models.Users;
 using System;
 using WebApi.Models.Courses;
 using System.Linq;
+using System.Net.Http;
+using Microsoft.AspNet.Identity;
 
 namespace WebApi.Controllers
 {
@@ -27,6 +29,7 @@ namespace WebApi.Controllers
 
         // GET: api/Users
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult GetUsers()
         {
             return Ok(_autoMapper.Map<List<UserDto>>(_uow.Users.All));
@@ -42,6 +45,10 @@ namespace WebApi.Controllers
                 return NotFound();
             }
 
+            if (!IsValidAuthorization(id))
+            {
+                return Unauthorized();
+            }
             return Ok(_autoMapper.Map<User, UserDto>(user));
         }
 
@@ -49,6 +56,10 @@ namespace WebApi.Controllers
         [HttpPut]
         public IHttpActionResult PutUser(int id, User user)
         {
+            if (!IsValidAuthorization(id))
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -73,7 +84,7 @@ namespace WebApi.Controllers
                 return InternalServerError();
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok();
         }
 
 
@@ -81,7 +92,22 @@ namespace WebApi.Controllers
         [HttpGet]
         public IHttpActionResult GetCourses(int id)
         {
+            if (!IsValidAuthorization(id))
+            {
+                return Unauthorized();
+            }
             return Ok(_autoMapper.Map<List<UsersCourseMemberDto>>(_uow.Users.GetById(id).Courses));
+        }
+
+        [Route("{id}/Roles")]
+        [HttpGet]
+        public IHttpActionResult GetRoles(int id)
+        {
+            if (!IsValidAuthorization(id))
+            {
+                return Unauthorized();
+            }
+            return Ok(_autoMapper.Map<UserRoleDto>(_uow.Users.GetById(id).Roles));
         }
 
         //// POST: api/Users
@@ -102,7 +128,6 @@ namespace WebApi.Controllers
 
         //// DELETE: api/Users/5
         //[HttpDelete]
-        //[ResponseType(typeof(User))]
         //public IHttpActionResult DeleteUser(int id)
         //{
         //    User user = _uow.Users.Find(id);
@@ -129,6 +154,15 @@ namespace WebApi.Controllers
         private bool UserExists(int id)
         {
             return _uow.Users.GetById(id) == null;
+        }
+
+        private bool IsValidAuthorization(int userId)
+        {
+            if (Request.GetRequestContext().Principal.IsInRole("Admin"))
+            {
+                return true;
+            }
+            return userId == Convert.ToInt32(Request.GetRequestContext().Principal.Identity.GetUserId());
         }
     }
 }

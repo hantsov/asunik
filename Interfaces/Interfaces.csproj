@@ -47,6 +47,7 @@
     <Compile Include="IDbContext.cs" />
     <Compile Include="Helpers\IEFRepositoryProvider.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
+    <Compile Include="Repositories\ICourseMemberRepository.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
     <Compile Include="Repositories\Identity\IRoleRepository.cs" />

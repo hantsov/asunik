@@ -33,14 +33,10 @@ namespace DAL.Helpers
                 Name = "Admin"
             });
 
-            context.SaveChanges();
-
             context.Roles.Add(new Role()
             {
                 Name = "User"
             });
-
-            context.SaveChanges();
 
             // Users
             context.Users.Add(new User()
@@ -53,8 +49,6 @@ namespace DAL.Helpers
                 SecurityStamp = Guid.NewGuid().ToString()
             });
 
-            context.SaveChanges();
-
             context.Users.Add(new User()
             {
                 UserName = "juhan@test.ee",
@@ -64,7 +58,6 @@ namespace DAL.Helpers
                 PasswordHash = pwdHasher.HashPassword("test123"),
                 SecurityStamp = Guid.NewGuid().ToString()
             });
-
             context.SaveChanges();
 
             // Users in Roles
@@ -74,6 +67,12 @@ namespace DAL.Helpers
                 Role = context.Roles.FirstOrDefault(a => a.Name == "Admin")
             });
             context.SaveChanges();
+
+            context.UserRoles.Add(new UserRole()
+            {
+                User = context.Users.FirstOrDefault(a => a.UserName == "hardi@test.ee"),
+                Role = context.Roles.FirstOrDefault(a => a.Name == "User")
+            });
 
             context.UserRoles.Add(new UserRole()
             {

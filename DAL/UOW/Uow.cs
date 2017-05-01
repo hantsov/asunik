@@ -38,8 +38,10 @@ namespace DAL.UOW
         }
 
         public IUserRepository Users => GetRepo<IUserRepository>();
+        public IRoleRepository Roles => GetRepo<IRoleRepository>();
         public IEventRepository Events => GetRepo<IEventRepository>();
         public ICourseRepository Courses => GetRepo<ICourseRepository>();
+        public ICourseMemberRepository CourseMembers => GetRepo<ICourseMemberRepository>();
 
         // calling standard EF repo provider
         private IRepository<T> GetStandardRepo<T>() where T : class

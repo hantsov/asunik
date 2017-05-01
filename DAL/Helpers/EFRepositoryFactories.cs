@@ -39,7 +39,8 @@ namespace DAL.Helpers
                 {typeof (IRoleRepository), dbContext => new RoleRepository(dbContext)},
 
                 {typeof (IEventRepository), dbContext => new EventsRepository(dbContext)},
-                {typeof (ICourseRepository), dbContext => new CoursesRepository(dbContext)}
+                {typeof (ICourseRepository), dbContext => new CoursesRepository(dbContext)},
+                {typeof (ICourseMemberRepository), dbContext => new CourseMemberRepository(dbContext)}
             };
         }
 

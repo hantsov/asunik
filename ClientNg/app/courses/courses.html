@@ -5,15 +5,19 @@
             <h5 class="mt-0 mb-1"><a ng-href="#">{{course.heading}}</a></h5>
             <h6 class="mt-0 mb-1">Instructor(s) ...</h6>
             <p style="text-align: justify; padding: 10px">{{course.description}}</p>
-            <div>
-                <!-- Button trigger modal -->
-                <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+
+            <div class="float-right">
+                <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-primary btn-site float-right" data-toggle="modal" data-target="#exampleModal">
                     Register
                 </button>
-            </div>
+            </div><br><br>
+            <div ng-hide="!vm.isUserWithRequiredRoleForFeature('CourseEdit')" class="float-right">
+                <a ng-click="vm.setSelectedCourse(course.id)" ng-href="#!courses/edit/{{course.id}}" class="btn btn-primary btn-md btn-site float-right">
+                    Edit
+                </a>
+            </div><br>
         </div>
     </li>
 </ul>
-
 
 <div ng-include="'app/courses/courses_confirm.html'"></div>

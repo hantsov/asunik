@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Domain.Identity;
+using Interfaces.UOW;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -20,9 +21,11 @@ namespace WebApi.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IUow _uow;
 
-        public AccountController(ApplicationUserManager userManager)
+        public AccountController(ApplicationUserManager userManager, IUow uow)
         {
+            _uow = uow;
             _userManager = userManager;
         }
 
@@ -193,6 +196,14 @@ namespace WebApi.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            // create default role
+            user.Roles.Add(new UserRole()
+            {
+                User = user,
+                Role = _uow.Roles.GetByRoleName("User")
+            });
+            _uow.Commit();
 
             return Ok();
         }

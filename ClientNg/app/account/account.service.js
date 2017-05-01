@@ -5,7 +5,7 @@
         .module('app')
         .service('accountService', accountService);
 
-    function accountService($http, $q, localStorageService) {
+    function accountService($http, $q, localStorageService, usersService) {
         var shared = this;
 
         var serviceAddress = "http://localhost:57953/api/account";
@@ -14,7 +14,8 @@
         shared.authentication = {
             isAuth: false,
             username: "",
-            userId: ""
+            userId: "",
+            roles: ""
         };
 
         shared.createAccount = function (registration) {
@@ -24,6 +25,16 @@
 
         };
 
+        var fillAuthData = function () {
+            var authData = localStorageService.get('authorizationData');
+            if (authData) {
+                shared.authentication.isAuth = true;
+                shared.authentication.username = authData.username;
+                shared.authentication.userId = authData.userId;
+                shared.authentication.token = authData.token;
+                shared.authentication.roles = authData.roles;
+            }
+        };
 
         // from https://github.com/tjoudeh/AngularJSAuthentication
         shared.signIn = function (signinData) {
@@ -33,12 +44,15 @@
             var deferred = $q.defer();
 
             $http.post(tokenAddress, data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
-
                 localStorageService.set('authorizationData', { token: response.data.access_token, username: response.data.username, userId: response.data.userId });
-
-                shared.authentication.isAuth = true;
-                shared.authentication.username = signinData.username;
-                shared.authentication.userId = signinData.id;
+                fillAuthData();
+                // fill roles
+                usersService.getUserRoles(response.data.userId).then(function (response) {
+                    var authData = localStorageService.get('authorizationData');
+                    authData.roles = response.roles;
+                    localStorageService.set('authorizationData', authData);
+                    fillAuthData();
+                });
 
                 deferred.resolve(response);
 
@@ -52,28 +66,33 @@
         };
 
         shared.signOut = function () {
-
             localStorageService.remove('authorizationData');
-
             shared.authentication.isAuth = false;
             shared.authentication.username = "";
 
         };
 
-        var fillAuthData = function () {
-
-            var authData = localStorageService.get('authorizationData');
-            if (authData) {
-                shared.authentication.isAuth = true;
-                shared.authentication.username = authData.username;
-                shared.authentication.userId = authData.userId;
-                shared.authentication.token = authData.token;   
+        shared.isUserWithRequiredRoleForFeature = function (feature) {
+            if (feature === "Users") {
+                return isUserWithRequiredRole("Admin");
             }
-
+            else if (feature === "CourseEdit") {
+                return isUserWithRequiredRole("Admin");
+            }
+            return true;
         };
 
+        function isUserWithRequiredRole(requiredRole) {
+            if (shared.authentication.roles) {
+                for (var i = 0; i < shared.authentication.roles.length; i++) {
+                    if (shared.authentication.roles[i].indexOf(requiredRole) >= 0) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         // init values
         fillAuthData();
-
     }
 })();

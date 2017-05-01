@@ -14,13 +14,12 @@
 
         function activate() {
             vm.authentication = accountService.authentication;
+            vm.isUserWithRequiredRoleForFeature = accountService.isUserWithRequiredRoleForFeature;
         }
 
         vm.signOut = function () {
-            accountService.signOut().then(function (response) {
+            accountService.signOut();
                 $location.path('/home');
-
-            });
         };
     }
 })();

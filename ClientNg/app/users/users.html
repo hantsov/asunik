@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div ng-hide="!vm.isUserWithRequiredRoleForFeature('Users')">
     <input type="text" placeholder="Search" class="input-lg form-control" ng-model="vm.usersFilter" ng-change="vm.filterUsers()"/>
     <div id="userAccordion" role="tablist" aria-multiselectable="true" ng-repeat="item in vm.filteredUsers | orderBy:'+lastname' | limitTo: 50">
         <div class="card">
@@ -17,7 +17,7 @@
                             <td>{{value}}</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center" colspan="2"><a class="btn btn-primary btn-md" ng-href="#!users/edit/{{item.id}}">Edit</a></td>
+                            <td style="text-align: center" colspan="2"><a class="btn btn-primary btn-md btn-site" ng-href="#!users/edit/{{item.id}}">Edit</a></td>
                         </tr>
                     </table>
                 </div>

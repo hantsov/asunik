@@ -35,6 +35,12 @@
             });
         }
 
+        shared.removeMember = function (courseId, userId) {
+            return $http.delete(serviceAddress + "/" + courseId + "/members/" + userId).then(function (response) {
+                return response.data;
+            });
+        }
+
         shared.registerToCourse = function (courseId) {
             var userData = {
                 userId: accountService.authentication.userId,

@@ -21,7 +21,7 @@ angular
                 if (rejection.status === 401) {
                     var authService = $injector.get('accountService');
 
-                    authService.logOut();
+                    authService.signOut();
                     $location.path('/signin');
                 }
                 return $q.reject(rejection);

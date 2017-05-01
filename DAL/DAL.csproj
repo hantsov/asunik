@@ -75,6 +75,7 @@
     <Compile Include="Helpers\FormattedDbEntityValidationException.cs" />
     <Compile Include="Helpers\UsernameResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CourseMemberRepository.cs" />
     <Compile Include="Repositories\CoursesRepository.cs" />
     <Compile Include="Repositories\EventsRepository.cs" />
     <Compile Include="Repositories\EFRepository.cs" />

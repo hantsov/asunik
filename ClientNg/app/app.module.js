@@ -39,7 +39,7 @@
             controllerAs: "vm"
         })
         .when("/courses/edit/:id", {
-            templateUrl: "app/courses/courses_edit.html",
+            templateUrl: "app/courses/course_edit.html",
             controller: "EditCourseController",
             controllerAs: "vm"
         })
