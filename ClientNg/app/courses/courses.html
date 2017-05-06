@@ -6,7 +6,7 @@
             <h6 class="mt-0 mb-1">Instructor(s) ...</h6>
             <p style="text-align: justify; padding: 10px">{{course.description}}</p>
 
-            <div class="float-right">
+            <div ng-hide="!vm.authentication.isAuth" class="float-right">
                 <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-primary btn-site float-right" data-toggle="modal" data-target="#exampleModal">
                     Register
                 </button>

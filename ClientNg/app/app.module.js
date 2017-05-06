@@ -13,6 +13,9 @@
             controller: "HomeController",
             controllerAs: "vm"
         })
+        .when("/about", {
+            templateUrl: "app/about/about.html"
+        })
         .when("/users", {
             templateUrl: "app/users/users.html",
             controller: "UsersController",
@@ -57,8 +60,8 @@
         $httpProvider.interceptors.push('authInterceptorService');
     });
 
-    var serviceBaseUri = 'http://asunikapi.azurewebsites.net/';
-    // var serviceBaseUri = 'http://localhost:57953/';
+    // var serviceBaseUri = 'http://apiasunik.azurewebsites.net/';
+    var serviceBaseUri = 'http://localhost:57953/';
     app.constant('apiSettings', {
         apiServiceBaseUri: serviceBaseUri
     });
