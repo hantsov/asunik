@@ -2,3 +2,6 @@
 **/obj
 **/packages
 /.vs
+**/PublishProfiles
+**/Migrations
+**/*.csproj
