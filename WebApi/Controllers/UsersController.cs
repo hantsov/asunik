@@ -6,11 +6,13 @@ using AutoMapper;
 using Domain.Identity;
 using Interfaces.UOW;
 using WebApi.Models.Users;
+using WebApi.Helpers;
 using System;
 using WebApi.Models.Courses;
 using System.Linq;
 using System.Net.Http;
 using Microsoft.AspNet.Identity;
+using static WebApi.Controllers.Helpers.AuthorizationHelper;
 
 namespace WebApi.Controllers
 {
@@ -45,7 +47,7 @@ namespace WebApi.Controllers
                 return NotFound();
             }
 
-            if (!IsValidAuthorization(id))
+            if (!IsValidAuthorization(id, Request))
             {
                 return Unauthorized();
             }
@@ -56,7 +58,7 @@ namespace WebApi.Controllers
         [HttpPut]
         public IHttpActionResult PutUser(int id, User user)
         {
-            if (!IsValidAuthorization(id))
+            if (!IsValidAuthorization(id, Request))
             {
                 return Unauthorized();
             }
@@ -92,7 +94,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IHttpActionResult GetCourses(int id)
         {
-            if (!IsValidAuthorization(id))
+            if (!IsValidAuthorization(id, Request))
             {
                 return Unauthorized();
             }
@@ -103,7 +105,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IHttpActionResult GetRoles(int id)
         {
-            if (!IsValidAuthorization(id))
+            if (!IsValidAuthorization(id, Request))
             {
                 return Unauthorized();
             }
@@ -154,15 +156,6 @@ namespace WebApi.Controllers
         private bool UserExists(int id)
         {
             return _uow.Users.GetById(id) == null;
-        }
-
-        private bool IsValidAuthorization(int userId)
-        {
-            if (Request.GetRequestContext().Principal.IsInRole("Admin"))
-            {
-                return true;
-            }
-            return userId == Convert.ToInt32(Request.GetRequestContext().Principal.Identity.GetUserId());
         }
     }
 }

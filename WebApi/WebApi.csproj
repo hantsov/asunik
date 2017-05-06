@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\Helpers\AuthorizationHelper.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Helpers\UserNameFactory.cs" />
     <Compile Include="Models\Account\AccountBindingModels.cs" />

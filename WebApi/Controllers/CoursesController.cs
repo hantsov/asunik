@@ -11,10 +11,11 @@ using Domain.Identity;
 using Interfaces.UOW;
 using WebApi.Models.Courses;
 using WebApi.Models.Errors;
+using static WebApi.Controllers.Helpers.AuthorizationHelper;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [RoutePrefix("api/Courses")]
     public class CoursesController : ApiController
     {
@@ -51,13 +52,10 @@ namespace WebApi.Controllers
         }
 
         // PUT: api/Courses/5
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IHttpActionResult PutCourse(int id, UpdateCourseDto course)
         {
-            //if (!IsValidAuthorization(id))
-            //{
-            //    return Unauthorized();
-            //}
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -97,6 +95,11 @@ namespace WebApi.Controllers
                 return NotFound();
             }
 
+            if (!IsValidAuthorization(user.Id, Request))
+            {
+                return Unauthorized();
+            }
+
             if (MemberExists(course.Id, user.Id))
             {
                 _errorMessages.Errors.Add("Already registered");
@@ -123,6 +126,7 @@ namespace WebApi.Controllers
 
 
         // DELETE: api/Courses/5/Members/5
+        [Authorize(Roles = "Admin")]
         [Route("{id}/Members/{userId}")]
         [HttpDelete]
         public IHttpActionResult DeleteMember(int id, int userId)
