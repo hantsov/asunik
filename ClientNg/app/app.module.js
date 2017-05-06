@@ -57,8 +57,8 @@
         $httpProvider.interceptors.push('authInterceptorService');
     });
 
-    // //var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
-    var serviceBaseUri = 'http://localhost:57953/';
+    var serviceBaseUri = 'http://asunikapi.azurewebsites.net/';
+    // var serviceBaseUri = 'http://localhost:57953/';
     app.constant('apiSettings', {
         apiServiceBaseUri: serviceBaseUri
     });
