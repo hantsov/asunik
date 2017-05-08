@@ -9,7 +9,7 @@ Hosted on Azure:
 * Client: http://asunikng.azurewebsites.net
 * API service:  http://apiasunik.azurewebsites.net/api
 
-###Some parts of the project are based on following samples:
+Some parts of the project are based on following samples:
 
 * https://github.com/akaver/ASP.NET-BaseApps
 * https://github.com/tjoudeh/AngularJSAuthentication
