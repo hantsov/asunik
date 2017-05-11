@@ -6,10 +6,10 @@
         .service('coursesService', coursesService);
 
 
-    function coursesService($http, accountService) {
+    function coursesService($http, accountService, apiSettings) {
         var shared = this;
 
-        var serviceAddress = "http://localhost:57953/api/courses";
+        var serviceAddress = apiSettings.apiServiceBaseUri + "api/courses";
 
         shared.getCourses = function () {
             return $http.get(serviceAddress).then(function (response) {

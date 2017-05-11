@@ -6,10 +6,10 @@
         .service('eventsService', eventsService);
 
 
-    function eventsService($http) {
+    function eventsService($http, apiSettings) {
         var shared = this;
 
-        var serviceAddress = "http://localhost:57953/api/events";
+        var serviceAddress = apiSettings.apiServiceBaseUri + "api/events";
 
         shared.getEvents = function () {
             return $http.get(serviceAddress).then(function (response) {

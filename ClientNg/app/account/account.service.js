@@ -5,11 +5,11 @@
         .module('app')
         .service('accountService', accountService);
 
-    function accountService($http, $q, localStorageService, usersService) {
+    function accountService($http, $q, localStorageService, usersService, apiSettings) {
         var shared = this;
 
-        var serviceAddress = "http://localhost:57953/api/account";
-        var tokenAddress = "http://localhost:57953/token";
+        var serviceAddress = apiSettings.apiServiceBaseUri + "api/account";
+        var tokenAddress = apiSettings.apiServiceBaseUri + "token";
 
         shared.authentication = {
             isAuth: false,

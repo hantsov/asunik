@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="appContent\css\course_edit.css" />
-    <Content Include="appContent\css\home.css" />
     <Content Include="appContent\css\signform.css" />
     <Content Include="appContent\css\site.css" />
     <Content Include="appContent\images\exclamation.png" />

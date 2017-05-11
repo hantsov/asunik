@@ -19,3 +19,18 @@
 .btn-site {
     width: 100px;
 }
+
+.form-data {
+    max-width: 525px;
+    margin: 0 auto;
+    border: none;
+}
+
+.form-data td, .form-data th {
+    border: none;
+}
+
+.td-data, .td-label {
+    text-align: left;
+}
+

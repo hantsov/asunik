@@ -2,11 +2,11 @@
     <li class="media">
         <img class="d-flex mr-3 img-fluid rounded" style="max-height: 128px; max-width: 128px" ng-src="{{course.imgLoc}}" alt="Generic placeholder image">
         <div class="media-body">
-            <h5 class="mt-0 mb-1"><a ng-href="#">{{course.heading}}</a></h5>
+            <h5 class="mt-0 mb-1">{{course.heading}}</h5>
             <h6 class="mt-0 mb-1">Instructor(s) ...</h6>
             <p style="text-align: justify; padding: 10px">{{course.description}}</p>
 
-            <div class="float-right">
+            <div ng-hide="!vm.authentication.isAuth" class="float-right">
                 <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-primary btn-site float-right" data-toggle="modal" data-target="#exampleModal">
                     Register
                 </button>
@@ -15,9 +15,19 @@
                 <a ng-click="vm.setSelectedCourse(course.id)" ng-href="#!courses/edit/{{course.id}}" class="btn btn-primary btn-md btn-site float-right">
                     Edit
                 </a>
+            </div><br><br/>
+           <div ng-hide="!vm.isUserWithRequiredRoleForFeature('CourseEdit')" class="float-right">
+               <button ng-click="vm.removeCourse(course.id)" type="button" class="btn btn-danger btn-site float-right">
+                   Remove
+               </button>
             </div><br>
         </div>
     </li>
 </ul>
-
+<br/>
+<div ng-hide="!vm.isUserWithRequiredRoleForFeature('CourseEdit')" style="text-align: center">
+    <a ng-click="vm.setSelectedCourse(course.id)" ng-href="#!courses/add/{{course.id}}" class="btn btn-success btn-md btn-site">
+        Add
+    </a>
+</div>
 <div ng-include="'app/courses/courses_confirm.html'"></div>

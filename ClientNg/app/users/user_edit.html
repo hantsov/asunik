@@ -2,29 +2,30 @@
     <div class="col-centered">
         <form ng-submit="vm.updateUser()">
             <div class="form-group">
+                <label for="iEmail">Email</label>
+                <input id="iEmail" type="text" ng-model="vm.user.email" class="form-control" placeholder="Email" required="" autofocus=""/>
+            </div>
+            <div class="form-group">
+                <label for="iUsername">Username</label>
+                <input id="iUsername" type="text" ng-model="vm.user.userName" class="form-control" placeholder="Username" required="" autofocus="" />
+            </div>
+            <div class="form-group">
                 <label for="iFirstname">Firstname</label>
-                <input id="iFirstname" type="text" ng-model="vm.user.firstName" class="form-control" placeholder="Firstname" required="" autofocus="" />
+                <input id="iFirstname" type="text" ng-model="vm.user.firstName" class="form-control" placeholder="Firstname" required="" autofocus=""/>
             </div>
             <div class="form-group">
                 <label for="iLastname">Lastname</label>
-                <input id="iLastname" type="text" ng-model="vm.user.lastName" class="form-control" placeholder="Lastname" required="" autofocus="" />
+                <input id="iLastname" type="text" ng-model="vm.user.lastName" class="form-control" placeholder="Lastname" required="" autofocus=""/>
             </div>
             <div class="form-group">
-                <label for="iEmail">Email</label>
-                <input id="iEmail" type="text" ng-model="vm.user.email" class="form-control" placeholder="Email" required="" autofocus="" />
+                <label for="iPhone">Phone</label>
+                <input id="iPhone" type="text" ng-model="vm.user.phoneNumber" class="form-control" placeholder="Phone" required="" autofocus=""/>
             </div>
-            <!--<div class="form-group">
-                <table>
-                    <tr ng-repeat="item in vm.userCourses">
-                        <td>{{ item }}</td>
-                    </tr>
-                </table>
-            </div>-->
             <div ng-hide="vm.message == ''" ng-class="(vm.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
                 {{vm.message}}
             </div>
             <div>
-                <input class="btn btn-success btn-md btn-site" type="submit" />
+                <input class="btn btn-success btn-md btn-site" type="submit"/>
                 <input class="btn btn-primary btn-md btn-site" ng-click="vm.back()" type="button" value="Cancel"/>
             </div>
         </form>

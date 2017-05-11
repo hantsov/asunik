@@ -1,23 +1,43 @@
 ﻿<div ng-hide="!vm.isUserWithRequiredRoleForFeature('Users')">
     <input type="text" placeholder="Search" class="input-lg form-control" ng-model="vm.usersFilter" ng-change="vm.filterUsers()"/>
-    <div id="userAccordion" role="tablist" aria-multiselectable="true" ng-repeat="item in vm.filteredUsers | orderBy:'+lastname' | limitTo: 50">
+    <div id="userAccordion" role="tablist" aria-multiselectable="true" ng-repeat="user in vm.filteredUsers | orderBy:'+lastname' | limitTo: 50">
         <div class="card">
             <div class="card-header" role="tab" id="userHeader{{$index}}">
                 <h5 class="mb-0">
                     <a data-toggle="collapse" data-parent="#userAccordion" data-target="#userContent{{$index}}" aria-expanded="false" aria-controls="userContent{{$index}}">
-                        {{item.firstName + ", " + item.lastName}}
+                        {{user.firstName + ", " + user.lastName}}
                     </a>
                 </h5>
             </div>
             <div id="userContent{{$index}}" class="collapse" role="tabpanel" aria-labelledby="userHeader{{$index}}">
                 <div class="card-block">
-                    <table class="table table-bordered table-hover">
-                        <tr ng-repeat="(key, value) in item">
-                            <td>{{key}}</td>
-                            <td>{{value}}</td>
+                    <table class="table table-hover">
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td>{{user.email}}</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center" colspan="2"><a class="btn btn-primary btn-md btn-site" ng-href="#!users/edit/{{item.id}}">Edit</a></td>
+                            <td><b>Username</b></td>
+                            <td>{{user.userName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Firstname</b></td>
+                            <td>{{user.firstName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Lastname</b></td>
+                            <td>{{user.lastName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Lastname</b></td>
+                            <td>{{user.lastName}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Phone</b></td>
+                            <td>{{user.phoneNumber}}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center" colspan="2"><a class="btn btn-primary btn-md btn-site" ng-href="#!users/edit/{{user.id}}">Edit</a></td>
                         </tr>
                     </table>
                 </div>
