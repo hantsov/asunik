@@ -46,9 +46,19 @@
             controller: "EditCourseController",
             controllerAs: "vm"
         })
+        .when("/courses/create", {
+            templateUrl: "app/courses/course_create.html",
+            controller: "CreateCourseController",
+            controllerAs: "vm"
+        })
         .when("/profile", {
             templateUrl: "app/profile/profile.html",
             controller: "ProfileController",
+            controllerAs: "vm"
+        })
+        .when("/events/create", {
+            templateUrl: "app/events/event_create.html",
+            controller: "CreateEventController",
             controllerAs: "vm"
         })
         .otherwise({

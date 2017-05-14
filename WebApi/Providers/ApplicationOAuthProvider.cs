@@ -34,10 +34,10 @@ namespace WebApi.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager =
-                (ApplicationUserManager)
-                    GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (ApplicationUserManager));
-                // context.OwinContext.GetUserManager<ApplicationUserManager>();
+            var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+
+            //(ApplicationUserManager)
+            //        GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(ApplicationUserManager));
 
             User user = await userManager.FindAsync(context.UserName, context.Password);
             if (user == null)

@@ -3,6 +3,8 @@ using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.OAuth;
+using Ninject;
+using Ninject.Web.WebApi;
 using Owin;
 using WebApi.Providers;
 
@@ -17,11 +19,11 @@ namespace WebApi
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             DataProtectionProvider = app.GetDataProtectionProvider();
-
-            app.CreatePerOwinContext(() => (ApplicationUserManager) GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (ApplicationUserManager)));
+            app.CreatePerOwinContext(() => (ApplicationUserManager) NinjectConfig.NinjectKernel.Get(typeof (ApplicationUserManager)));
+            //app.CreatePerOwinContext(() => (ApplicationUserManager) GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(ApplicationUserManager)));
 
             // Configure the application for OAuth based flow
             PublicClientId = "self";

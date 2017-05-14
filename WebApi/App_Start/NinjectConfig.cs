@@ -1,6 +1,4 @@
-using System;
-using System.Web;
-using System.Web.Http;
+﻿using System.Reflection;
 using AutoMapper;
 using DAL;
 using DAL.Helpers;
@@ -11,54 +9,29 @@ using Interfaces;
 using Interfaces.Helpers;
 using Interfaces.UOW;
 using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
-using WebApi;
 using WebApi.Helpers;
-
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
 
 namespace WebApi
 {
-    public static class NinjectWebCommon 
+    public class NinjectConfig
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        public static StandardKernel NinjectKernel { get; set; }
 
         /// <summary>
-        /// Starts the application
+        /// Creates the kernel.
         /// </summary>
-        public static void Start() 
+        /// <returns>the newly created kernel.</returns>
+        public static StandardKernel CreateKernel()
         {
-            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
-        }
-        
-        /// <summary>
-        /// Stops the application.
-        /// </summary>
-        public static void Stop()
-        {
-            bootstrapper.ShutDown();
-        }
-        
-        /// <summary>
-        /// Creates the kernel that will manage your application.
-        /// </summary>
-        /// <returns>The created kernel.</returns>
-        private static IKernel CreateKernel()
-        {
+
             var kernel = new StandardKernel();
             try
             {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-                kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                GlobalConfiguration.Configuration.DependencyResolver = kernel.Get<System.Web.Http.Dependencies.IDependencyResolver>();
-
+                kernel.Load(Assembly.GetExecutingAssembly());
                 RegisterServices(kernel);
+                NinjectKernel = kernel;
                 return kernel;
             }
             catch
@@ -98,6 +71,6 @@ namespace WebApi
             kernel.Bind<IUserNameResolver>()
                 .ToMethod(a => new UserNameResolver(UserNameFactory.GetCurrentUserNameFactory()))
                 .InSingletonScope();
-        }        
+        }
     }
 }

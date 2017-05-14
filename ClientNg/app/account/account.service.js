@@ -79,6 +79,9 @@
             else if (feature === "CourseEdit") {
                 return isUserWithRequiredRole("Admin");
             }
+            else if (feature === "EventCreate") {
+                return isUserWithRequiredRole("Admin");
+            }
             return true;
         };
 

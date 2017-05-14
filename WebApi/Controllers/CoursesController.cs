@@ -51,6 +51,21 @@ namespace WebApi.Controllers
             return Ok(_autoMapper.Map<Course, CourseDto>(course));
         }
 
+        // POST: api/Courses
+        [HttpPost]
+        public IHttpActionResult PostCourse(CreateCourseDto course)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var courseToAdd = _autoMapper.Map<CreateCourseDto, Course>(course);
+            _uow.Courses.Add(courseToAdd);
+            _uow.Commit();
+
+            return CreatedAtRoute("AsunikAPI", new { id = courseToAdd.Id}, courseToAdd);
+        }
+
         // PUT: api/Courses/5
         [Authorize(Roles = "Admin")]
         [HttpPut]
@@ -82,6 +97,29 @@ namespace WebApi.Controllers
 
             return Ok();
         }
+
+        // DELETE: api/Courses/5
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+        public IHttpActionResult DeleteCourse(int id)
+        {
+            Course course = _uow.Courses.GetById(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            _uow.Courses.Delete(course);
+            try
+            {
+                _uow.Commit();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
 
         // POST: api/Courses/5/Members
         [Route("{id}/Members")]

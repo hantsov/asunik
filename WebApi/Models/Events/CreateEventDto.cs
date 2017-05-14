@@ -6,12 +6,10 @@ using WebApi.Models.Users;
 
 namespace WebApi.Models.Events
 {
-    public class EventDto
+    public class CreateEventDto
     {
-        public int Id { get; set; }
         public string Heading { get; set; }
         public string Content { get; set; }
-        public string CreatedAtDT { get; set; }
-        public virtual UserDto Author { get; set; }
+        public int AuthorId { get; set; }
     }
 }

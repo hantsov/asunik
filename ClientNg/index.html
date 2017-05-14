@@ -6,18 +6,17 @@
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css">
     <link href="appContent/css/signform.css" rel="stylesheet" />
     <link href="appContent/css/site.css" rel="stylesheet" />
-    <link href="appContent/css/home.css" rel="stylesheet" />
     <link href="appContent/css/course_edit.css" rel="stylesheet" />
 </head>
 <body>
     <div ng-controller="NavbarController as vm" ng-include="'app/layout/navbar.html'"></div>
 
-    <div class="container">
-
-        <div id="viewContainer" ng-view></div>
-
-        <div ng-include="'app/layout/footer.html'"></div>
+<div class="container">
+    <div class="row">
+        <div class="col" id="viewContainer" ng-view></div>
     </div>
+    <div ng-include="'app/layout/footer.html'"></div>
+</div>
 
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
@@ -25,18 +24,20 @@
     <script src="Scripts/angular-local-storage.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/account/authInterceptor.service.js"></script>
-    <script src="app/home/events.service.js"></script>
+    <script src="app/events/events.service.js"></script>
+    <script src="app/events/createEvent.controller.js"></script>
     <script src="app/layout/navbar.controller.js"></script>
     <script src="app/users/users.service.js"></script>
     <script src="app/courses/courses.service.js"></script>
     <script src="app/home/home.controller.js"></script>
     <script src="app/users/users.controller.js"></script>
-    <script src="app/users/edituser.controller.js"></script>
+    <script src="app/users/editUser.controller.js"></script>
     <script src="app/account/account.service.js"></script>
     <script src="app/account/signin.controller.js"></script>
     <script src="app/account/signup.controller.js"></script>
     <script src="app/courses/courses.controller.js"></script>
-    <script src="app/courses/editcourse.controller.js"></script>
+    <script src="app/courses/editCourse.controller.js"></script>
+    <script src="app/courses/createCourse.controller.js"></script>
     <script src="app/profile/profile.controller.js"></script>
     <script src="Scripts/tether/tether.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>

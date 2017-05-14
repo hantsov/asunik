@@ -47,5 +47,18 @@
                  vm.modalMessage = "Failed to register due to:" + response.data.errors.join(' ');
              });
 		};
+
+		vm.removeCourse = function () {
+		    coursesService.removeCourse(vm.selectedCourseId).then(function (response) {
+		        vm.removedSuccessfully = true;
+		        vm.modalMessage = "Removed successfully, you will be redicted to profile page in 2 seconds.";
+		        startTimer();
+
+		    },
+             function (response) {
+                 vm.removedSuccessfully = false;
+                 vm.modalMessage = "Failed to remove due to:" + response.data.errors.join(' ');
+             });
+		};
 	}
 })();

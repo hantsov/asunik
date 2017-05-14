@@ -1,9 +1,9 @@
 ﻿<!-- Modal -->
-<div class="modal fade" id="confirmRegisterModal" tabindex="-1" role="dialog" aria-labelledby="confirmRegisterModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmRemoveModal" tabindex="-1" role="dialog" aria-labelledby="confirmRemoveModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmRegisterModalLabel">Confirm registration</h5>
+                <h5 class="modal-title" id="confirmRemoveModalLabel">Confirm removal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,10 +12,10 @@
                 Are you sure?
             </div>
             <div class="modal-footer">
-                <button type="button" ng-click="vm.register()" class="btn btn-primary">Confirm</button>
+                <button type="button" ng-click="vm.removeCourse()" class="btn btn-danger">Confirm</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
-            <div ng-hide="vm.modalMessage == ''" ng-class="(vm.registeredSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+            <div ng-hide="vm.modalMessage == ''" ng-class="(vm.removedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
                 {{vm.modalMessage}}
             </div>
         </div>

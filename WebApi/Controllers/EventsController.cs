@@ -8,11 +8,14 @@ using System.Web.Http;
 using AutoMapper;
 using Domain;
 using Domain.Event;
+using Domain.Identity;
 using Interfaces.UOW;
 using WebApi.Models.Events;
+using static WebApi.Controllers.Helpers.AuthorizationHelper;
 
 namespace WebApi.Controllers
 {
+    [RoutePrefix("api/Events")]
     public class EventsController : ApiController
     {
         private readonly IUow _uow;
@@ -42,6 +45,35 @@ namespace WebApi.Controllers
             }
 
             return Ok(_autoMapper.Map<Event, EventDto>(Event));
+        }
+
+        // POST: api/Events
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IHttpActionResult PostEvent(CreateEventDto eventDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            User user = _uow.Users.GetById(eventDto.AuthorId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            var eventToAdd = _autoMapper.Map<CreateEventDto, Event>(eventDto);
+            eventToAdd.Author = user;
+            _uow.Events.Add(eventToAdd);
+            try
+            {
+                _uow.Commit();
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+
+            return CreatedAtRoute("AsunikAPI", new { id = eventToAdd.Id }, _autoMapper.Map<Event, EventDto>(eventToAdd));
         }
 
         //// PUT: api/Events/5

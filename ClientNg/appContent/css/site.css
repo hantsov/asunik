@@ -17,7 +17,8 @@
 }
 
 .btn-site {
-    width: 100px;
+    min-width: 100px;
+    max-width: 200px;
 }
 
 .form-data {

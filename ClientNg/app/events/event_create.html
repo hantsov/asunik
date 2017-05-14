@@ -1,0 +1,22 @@
+﻿<div ng-hide="!vm.isUserWithRequiredRoleForFeature('EventCreate')" class="row">
+    <div class="col-centered course-edit">
+        <form ng-submit="vm.createEvent()">
+            <h5>Create new event</h5>
+            <div class="form-group">
+                <label for="iHeading">Heading</label>
+                <input id="iHeading" type="text" ng-model="vm.event.heading" class="form-control" placeholder="Heading" required="" autofocus="" />
+            </div>
+            <div class="form-group">
+                <label for="iContent">Content</label>
+                <textarea id="iContent" rows="10" ng-model="vm.event.content" class="form-control" placeholder="Content" required="" autofocus=""></textarea>
+            </div>
+            <div ng-hide="vm.message == ''" ng-class="(vm.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{vm.message}}
+            </div>
+            <div class="text-center">
+                <input class="btn btn-success btn-md btn-site" type="submit" />
+                <input class="btn btn-primary btn-md btn-site" ng-click="vm.back()" type="button" value="Cancel" />
+            </div>
+        </form>
+    </div>
+</div>

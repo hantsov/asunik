@@ -45,10 +45,6 @@ namespace WebApi
             //// culture of the serializer
             //jsonFormatter.SerializerSettings.Culture = new CultureInfo("et-EE");
 
-            // wildcards only for development ease
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 

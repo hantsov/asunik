@@ -28,6 +28,16 @@ namespace WebApi
                 .ForMember(dest => dest.Level, opt => opt.MapFrom(src => src.Level))
                 .ForMember(dest => dest.ImgLoc, opt => opt.MapFrom(src => src.ImgLoc))
                 .ForAllOtherMembers(opt => opt.Ignore());
+            CreateMap<CreateCourseDto, Course>()
+                .ForMember(dest => dest.Heading, opt => opt.MapFrom(src => src.Heading))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Level, opt => opt.MapFrom(src => src.Level))
+                .ForMember(dest => dest.ImgLoc, opt => opt.MapFrom(src => src.ImgLoc))
+                .ForAllOtherMembers(opt => opt.Ignore());
+            CreateMap<CreateEventDto, Event>()
+                .ForMember(dest => dest.Heading, opt => opt.MapFrom(src => src.Heading))
+                .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Content))
+                .ForAllOtherMembers(opt => opt.Ignore());
             CreateMap<CourseMember, CoursesCourseMemberDto>();
             CreateMap<CourseMember, UsersCourseMemberDto>();
             CreateMap<Course, UserCourseDto>();

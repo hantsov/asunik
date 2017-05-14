@@ -7,7 +7,7 @@
             <p style="text-align: justify; padding: 10px">{{course.description}}</p>
 
             <div ng-hide="!vm.authentication.isAuth" class="float-right">
-                <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-primary btn-site float-right" data-toggle="modal" data-target="#exampleModal">
+                <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-primary btn-site float-right" data-toggle="modal" data-target="#confirmRegisterModal">
                     Register
                 </button>
             </div><br><br>
@@ -17,7 +17,7 @@
                 </a>
             </div><br><br/>
            <div ng-hide="!vm.isUserWithRequiredRoleForFeature('CourseEdit')" class="float-right">
-               <button ng-click="vm.removeCourse(course.id)" type="button" class="btn btn-danger btn-site float-right">
+               <button ng-click="vm.setSelectedCourse(course.id)" type="button" class="btn btn-danger btn-site float-right" data-toggle="modal" data-target="#confirmRemoveModal">
                    Remove
                </button>
             </div><br>
@@ -26,8 +26,9 @@
 </ul>
 <br/>
 <div ng-hide="!vm.isUserWithRequiredRoleForFeature('CourseEdit')" style="text-align: center">
-    <a ng-click="vm.setSelectedCourse(course.id)" ng-href="#!courses/add/{{course.id}}" class="btn btn-success btn-md btn-site">
-        Add
+    <a ng-href="#!courses/create" class="btn btn-success btn-md btn-site">
+        Create new
     </a>
 </div>
 <div ng-include="'app/courses/courses_confirm.html'"></div>
+<div ng-include="'app/courses/course_remove_confirm.html'"></div>
