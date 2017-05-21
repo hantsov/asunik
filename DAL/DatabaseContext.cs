@@ -37,6 +37,8 @@ namespace DAL
 
             _logger.Debug("InstanceId: " + _instanceId);
 
+            // use for azure
+            //Database.SetInitializer<DatabaseContext>(null);
             Database.SetInitializer(new DbInitializer());
 
 
