@@ -15,11 +15,7 @@
         function activate() {
             vm.authentication = accountService.authentication;
             vm.isUserWithRequiredRoleForFeature = accountService.isUserWithRequiredRoleForFeature;
+            vm.signOut = accountService.signOut;
         }
-
-        vm.signOut = function () {
-            accountService.signOut();
-                $location.path('/home');
-        };
     }
 })();

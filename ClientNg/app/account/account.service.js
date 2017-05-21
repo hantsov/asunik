@@ -5,7 +5,7 @@
         .module('app')
         .service('accountService', accountService);
 
-    function accountService($http, $q, localStorageService, usersService, apiSettings) {
+    function accountService($http, $q, $location, $window, localStorageService, usersService, apiSettings) {
         var shared = this;
 
         var serviceAddress = apiSettings.apiServiceBaseUri + "api/account";
@@ -69,6 +69,8 @@
             localStorageService.remove('authorizationData');
             shared.authentication.isAuth = false;
             shared.authentication.username = "";
+            $location.path('/home');
+            $window.location.reload();
 
         };
 
