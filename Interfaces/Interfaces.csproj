@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="IDbContext.cs" />
     <Compile Include="Helpers\IEFRepositoryProvider.cs" />
+    <Compile Include="Repositories\IAlbumPhotoRepository.cs" />
+    <Compile Include="Repositories\IAlbumRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\ICourseMemberRepository.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />

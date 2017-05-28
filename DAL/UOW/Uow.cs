@@ -42,6 +42,8 @@ namespace DAL.UOW
         public IEventRepository Events => GetRepo<IEventRepository>();
         public ICourseRepository Courses => GetRepo<ICourseRepository>();
         public ICourseMemberRepository CourseMembers => GetRepo<ICourseMemberRepository>();
+        public IAlbumRepository Albums => GetRepo<IAlbumRepository>();
+        public IAlbumPhotoRepository AlbumPhotos => GetRepo<IAlbumPhotoRepository>();
 
         // calling standard EF repo provider
         private IRepository<T> GetStandardRepo<T>() where T : class

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="appContent\css\course_edit.css" />
+    <Content Include="appContent\css\gallery.css" />
     <Content Include="appContent\css\signform.css" />
     <Content Include="appContent\css\site.css" />
     <Content Include="appContent\images\exclamation.png" />
@@ -90,6 +91,11 @@
     <Content Include="app\events\events.service.js" />
     <Content Include="app\events\event_create.html" />
     <Content Include="app\courses\courses.html" />
+    <Content Include="app\gallery\album.html" />
+    <Content Include="app\gallery\albums.controller.js" />
+    <Content Include="app\gallery\gallery.controller.js" />
+    <Content Include="app\gallery\albums.service.js" />
+    <Content Include="app\gallery\gallery.html" />
     <Content Include="app\layout\footer.html" />
     <Content Include="app\layout\navbar.controller.js" />
     <Content Include="app\layout\navbar.html" />

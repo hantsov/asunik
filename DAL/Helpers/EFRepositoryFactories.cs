@@ -40,7 +40,9 @@ namespace DAL.Helpers
 
                 {typeof (IEventRepository), dbContext => new EventsRepository(dbContext)},
                 {typeof (ICourseRepository), dbContext => new CoursesRepository(dbContext)},
-                {typeof (ICourseMemberRepository), dbContext => new CourseMemberRepository(dbContext)}
+                {typeof (ICourseMemberRepository), dbContext => new CourseMemberRepository(dbContext)},
+                {typeof (IAlbumRepository), dbContext => new AlbumRepository(dbContext)},
+                {typeof (IAlbumPhotoRepository), dbContext => new AlbumPhotoRepository(dbContext)}
             };
         }
 

@@ -3,10 +3,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using AutoMapper;
 using Domain;
+using Domain.Album;
 using Domain.Course;
 using Domain.Event;
 using Domain.Identity;
 using WebApi.Models.Account;
+using WebApi.Models.Albums;
 using WebApi.Models.Courses;
 using WebApi.Models.Events;
 using WebApi.Models.Users;
@@ -43,6 +45,8 @@ namespace WebApi
             CreateMap<Course, UserCourseDto>();
             CreateMap<List<UserRole>, UserRoleDto>()
                 .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => src.Select(ur => ur.Role.Name)));
+            CreateMap<Album, AlbumDto>();
+            CreateMap<AlbumPhoto, AlbumPhotoDto>();
         }
     }
 }

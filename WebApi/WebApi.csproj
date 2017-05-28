@@ -198,6 +198,7 @@
     <Compile Include="App_Start\Startup.WebApi.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\Helpers\AuthorizationHelper.cs" />
@@ -205,6 +206,8 @@
     <Compile Include="Helpers\UserNameFactory.cs" />
     <Compile Include="Models\Account\AccountBindingModels.cs" />
     <Compile Include="Models\Account\ApiAccountViewModels.cs" />
+    <Compile Include="Models\Albums\AlbumPhotoDto.cs" />
+    <Compile Include="Models\Albums\AlbumDto.cs" />
     <Compile Include="Models\Courses\CourseDto.cs" />
     <Compile Include="Models\Courses\UpdateCourseDto.cs" />
     <Compile Include="Models\Events\CreateEventDto.cs" />

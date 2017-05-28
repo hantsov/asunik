@@ -12,6 +12,7 @@ using DAL.EFConfiguration;
 using DAL.EFConfiguration.Identity;
 using DAL.Helpers;
 using Domain;
+using Domain.Album;
 using Domain.Course;
 using Domain.Event;
 using Domain.Identity;
@@ -69,6 +70,8 @@ namespace DAL
         public IDbSet<Event> Events { get; set; }
         public IDbSet<Course> Courses { get; set; }
         public IDbSet<CourseMember> CourseMembers { get; set; }
+        public IDbSet<Album> Albums { get; set; }
+        public IDbSet<AlbumPhoto> AlbumPhotos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

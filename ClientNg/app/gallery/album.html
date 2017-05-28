@@ -1,0 +1,11 @@
+﻿<h3 class="my-4 text-center text-lg-left">{{vm.album.heading}}</h3>
+<div class="row text-center text-lg-left">
+    <div class="col-lg-3 col-md-4 col-xs-6" ng-repeat="photo in vm.album.photos | orderBy:'+sortOrder'">
+        <a href="{{photo.filePath}}" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src="{{photo.filePath}}" alt="http://placehold.it/400x300">
+        </a>
+    </div>
+</div>
+<div style="text-align: center">
+    <input class="btn btn-primary btn-md btn-site" ng-click="vm.back()" type="button" value="Back" />
+</div>

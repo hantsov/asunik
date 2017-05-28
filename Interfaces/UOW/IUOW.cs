@@ -23,5 +23,7 @@ namespace Interfaces.UOW
         IEventRepository Events { get; }
         ICourseRepository Courses { get; }
         ICourseMemberRepository CourseMembers { get; }
+        IAlbumRepository Albums { get; }
+        IAlbumPhotoRepository AlbumPhotos { get; }
     }
 }

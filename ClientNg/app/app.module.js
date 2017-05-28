@@ -61,6 +61,16 @@
             controller: "CreateEventController",
             controllerAs: "vm"
         })
+        .when("/gallery", {
+            templateUrl: "app/gallery/gallery.html",
+            controller: "GalleryController",
+            controllerAs: "vm"
+        })
+        .when("/gallery/albums/:id", {
+            templateUrl: "app/gallery/album.html",
+            controller: "AlbumsController",
+            controllerAs: "vm"
+        })
         .otherwise({
             redirectTo: '/'
         });

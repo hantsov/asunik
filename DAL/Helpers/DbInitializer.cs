@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
+using Domain.Album;
 using Domain.Course;
 using Domain.Event;
 using Domain.Identity;
@@ -19,6 +20,7 @@ namespace DAL.Helpers
             seedIdentity(context);
             seedEvents(context);
             seedCourses(context);
+            seedAlbums(context);
             base.Seed(context);
         }
 
@@ -152,5 +154,101 @@ namespace DAL.Helpers
 
             context.SaveChanges();
         }
+
+        private void seedAlbums(DatabaseContext context)
+        {
+            var pathBase = "../../appContent/images/gallery/";
+
+            context.Albums.Add(new Album()
+            {
+                Heading = "Spring Fair 2017",
+                SortOrder = 1,
+                ThumbnailPath = pathBase + "springfair2017/thumbnail.jpg"
+            });
+
+            context.Albums.Add(new Album()
+            {
+                Heading = "Shred Guitar Demo 2017",
+                SortOrder = 2,
+                ThumbnailPath = pathBase + "shred2017/thumbnail.jpg"
+            });
+
+            context.Albums.Add(new Album()
+            {
+                Heading = "Spring 2017 Exam Period",
+                SortOrder = 3,
+                ThumbnailPath = pathBase + "exams2017/thumbnail.jpg"
+            });
+
+            context.SaveChanges();
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "shred2017/shred0.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Shred Guitar Demo 2017")
+            });
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "shred2017/shred1.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Shred Guitar Demo 2017")
+            });
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "shred2017/shred2.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Shred Guitar Demo 2017")
+            });
+
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "springfair2017/springfair0.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Spring Fair 2017")
+            });
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "springfair2017/springfair1.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Spring Fair 2017")
+            });
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "springfair2017/springfair2.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Spring Fair 2017")
+            });
+
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "exams2017/exams0.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Spring 2017 Exam Period")
+            });
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "exams2017/exams1.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Spring 2017 Exam Period")
+            });
+
+            context.AlbumPhotos.Add(new AlbumPhoto()
+            {
+                FilePath = pathBase + "exams2017/exams2.jpg",
+                SortOrder = 1,
+                Photo = context.Albums.FirstOrDefault(a => a.Heading == "Spring 2017 Exam Period")
+            });
+
+            context.SaveChanges();
+        }
+
     }
 }

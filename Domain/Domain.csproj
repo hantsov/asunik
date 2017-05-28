@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Album\Album.cs" />
+    <Compile Include="Album\AlbumPhoto.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Course\Course.cs" />
     <Compile Include="Course\CourseMember.cs" />
