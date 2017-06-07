@@ -29,9 +29,13 @@ namespace WebApi.Controllers
 
         // GET: api/Events
         [HttpGet]
-        public IHttpActionResult GetEvents()
+        public IHttpActionResult GetEvents(string type = null)
         {
-            return Ok(_autoMapper.Map<List<EventDto>>(_uow.Events.All));
+            if (String.IsNullOrEmpty(type))
+            {
+                return Ok(_autoMapper.Map<List<EventDto>>(_uow.Events.All));
+            }
+            return Ok(_autoMapper.Map<List<EventDto>>(_uow.Events.GetByType(type)));
         }
 
         // GET: api/Events/5

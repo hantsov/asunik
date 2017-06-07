@@ -8,12 +8,11 @@ using Domain.Event;
 
 namespace Interfaces.Repositories
 {
-    public interface IEventRepository : IEventRepositoryBase<Event>
+    public interface IEventMemberRepository : IEventMemberRepositoryBase<EventMember>
     {
     }
 
-    public interface IEventRepositoryBase<TEvent> : IBaseRepository<TEvent> where TEvent : class
+    public interface IEventMemberRepositoryBase<TCourse> : IBaseRepository<TCourse> where TCourse : class
     {
-        List<TEvent> GetByType(string type);
     }
 }

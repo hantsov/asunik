@@ -91,6 +91,7 @@ namespace DAL.Helpers
             {
                 Author = context.Users.FirstOrDefault(a => a.UserName == "hardi@test.ee"),
                 Heading = "Now offering a course on shredding",
+                Type = "NEWS",
                 Content = "Shred guitar or shredding is a virtuoso lead guitar solo playing style for the guitar, based on various fast playing techniques." +
                           "Speed Building, Legato, Tapping, [and] Sweep Picking techniques shredders need to know—sweep picking, tapping, legato playing, whammy bar tricks, speed riffing, [and] thrash chording." +
                           " Shred guitarists use two- or three-octave scales, triads, or modes, played ascending and descending at a fast tempo."
@@ -100,6 +101,7 @@ namespace DAL.Helpers
             {
                 Author = context.Users.FirstOrDefault(a => a.UserName == "juhan@test.ee"),
                 Heading = "New teacher joins with us!",
+                Type = "NEWS",
                 Content = "Please give a warm welcome to Mr. Anti Friis who will be taking over guitar courses."
             });
 
@@ -107,7 +109,25 @@ namespace DAL.Helpers
             {
                 Author = context.Users.FirstOrDefault(a => a.UserName == "juhan@test.ee"),
                 Heading = "The new website!",
+                Type = "NEWS",
                 Content = "Hope you all like our new and awesome website. Please register a user and try it out."
+            });
+
+            context.Events.Add(new Event()
+            {
+                Author = context.Users.FirstOrDefault(a => a.UserName == "juhan@test.ee"),
+                Heading = "Friday night jam!",
+                Type = "PARTICIPATORY",
+                Content = "We are going to jam, join in!"
+            });
+
+            context.SaveChanges();
+
+            // Members
+            context.EventMembers.Add(new EventMember()
+            {
+                Event = context.Events.FirstOrDefault(c => c.Heading == "Friday night jam!"),
+                Member = context.Users.FirstOrDefault(u => u.UserName == "hardi@test.ee"),
             });
 
             context.SaveChanges();

@@ -11,8 +11,9 @@
 
         var serviceAddress = apiSettings.apiServiceBaseUri + "api/events";
 
-        shared.getEvents = function () {
-            return $http.get(serviceAddress).then(function (response) {
+        shared.getEvents = function (eventType) {
+            var requestUrl = serviceAddress + (eventType ? "?type=" + eventType : "");
+            return $http.get(requestUrl).then(function (response) {
                 return response.data;
             });
         };

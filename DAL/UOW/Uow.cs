@@ -40,6 +40,7 @@ namespace DAL.UOW
         public IUserRepository Users => GetRepo<IUserRepository>();
         public IRoleRepository Roles => GetRepo<IRoleRepository>();
         public IEventRepository Events => GetRepo<IEventRepository>();
+        public IEventMemberRepository EventMembers => GetRepo<IEventMemberRepository>();
         public ICourseRepository Courses => GetRepo<ICourseRepository>();
         public ICourseMemberRepository CourseMembers => GetRepo<ICourseMemberRepository>();
         public IAlbumRepository Albums => GetRepo<IAlbumRepository>();

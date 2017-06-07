@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <UseIISExpress>true</UseIISExpress>
+    <NameOfLastUsedPublishProfile>asunikng - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

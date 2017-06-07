@@ -22,6 +22,7 @@ namespace WebApi
         {
             CreateMap<User, UserDto>();
             CreateMap<Event, EventDto>();
+            CreateMap<EventMember, EventMemberDto>();
             CreateMap<Course, CourseDto>();
             CreateMap<UpdateCourseDto, Course>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -39,6 +40,7 @@ namespace WebApi
             CreateMap<CreateEventDto, Event>()
                 .ForMember(dest => dest.Heading, opt => opt.MapFrom(src => src.Heading))
                 .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForAllOtherMembers(opt => opt.Ignore());
             CreateMap<CourseMember, CoursesCourseMemberDto>();
             CreateMap<CourseMember, UsersCourseMemberDto>();

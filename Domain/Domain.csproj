@@ -58,6 +58,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Course\Course.cs" />
     <Compile Include="Course\CourseMember.cs" />
+    <Compile Include="Event\EventMember.cs" />
     <Compile Include="Event\Event.cs" />
     <Compile Include="Identity\Role.cs" />
     <Compile Include="Identity\User.cs" />

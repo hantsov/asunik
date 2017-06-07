@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace DAL.Repositories
     {
         public EventsRepository(IDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public List<Event> GetByType(string type)
+        {
+            return DbSet.Include(e => e.EventMembers.Select(em => em.Member)).Where(e => e.Type == type).ToList();
         }
     }
 }

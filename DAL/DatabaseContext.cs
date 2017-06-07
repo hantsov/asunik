@@ -68,6 +68,7 @@ namespace DAL
 
         // non-identity tables
         public IDbSet<Event> Events { get; set; }
+        public IDbSet<EventMember> EventMembers { get; set; }
         public IDbSet<Course> Courses { get; set; }
         public IDbSet<CourseMember> CourseMembers { get; set; }
         public IDbSet<Album> Albums { get; set; }

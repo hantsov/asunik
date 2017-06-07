@@ -21,6 +21,7 @@ namespace Interfaces.UOW
         IUserRepository Users { get; }
         IRoleRepository Roles { get; }
         IEventRepository Events { get; }
+        IEventMemberRepository EventMembers { get; }
         ICourseRepository Courses { get; }
         ICourseMemberRepository CourseMembers { get; }
         IAlbumRepository Albums { get; }

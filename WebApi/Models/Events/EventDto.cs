@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Domain.Event;
+using WebApi.Models.Courses;
 using WebApi.Models.Users;
 
 namespace WebApi.Models.Events
@@ -12,6 +14,8 @@ namespace WebApi.Models.Events
         public string Heading { get; set; }
         public string Content { get; set; }
         public string CreatedAtDT { get; set; }
-        public virtual UserDto Author { get; set; }
+        public string Type { get; set; }
+        public UserDto Author { get; set; }
+        public List<EventMemberDto> EventMembers { get; set; }
     }
 }

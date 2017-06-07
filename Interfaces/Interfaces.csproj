@@ -52,6 +52,7 @@
     <Compile Include="Repositories\ICourseMemberRepository.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
+    <Compile Include="Repositories\IEventMemberRepository.cs" />
     <Compile Include="Repositories\Identity\IRoleRepository.cs" />
     <Compile Include="Repositories\Identity\IUserClaimRepository.cs" />
     <Compile Include="Repositories\Identity\IUserLoginRepository.cs" />

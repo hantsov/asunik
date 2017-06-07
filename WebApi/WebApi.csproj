@@ -211,6 +211,7 @@
     <Compile Include="Models\Courses\CourseDto.cs" />
     <Compile Include="Models\Courses\UpdateCourseDto.cs" />
     <Compile Include="Models\Events\CreateEventDto.cs" />
+    <Compile Include="Models\Events\EventMemberDto.cs" />
     <Compile Include="Models\Users\UserRoleDto.cs" />
     <Compile Include="Models\Courses\CreateCourseDto.cs" />
     <Compile Include="Models\Courses\CoursesCourseMemberDto.cs" />

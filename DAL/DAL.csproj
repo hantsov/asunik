@@ -79,6 +79,7 @@
     <Compile Include="Repositories\AlbumRepository.cs" />
     <Compile Include="Repositories\CourseMemberRepository.cs" />
     <Compile Include="Repositories\CoursesRepository.cs" />
+    <Compile Include="Repositories\EventMembersRepository.cs" />
     <Compile Include="Repositories\EventsRepository.cs" />
     <Compile Include="Repositories\EFRepository.cs" />
     <Compile Include="Repositories\Identity\RoleRepository.cs" />

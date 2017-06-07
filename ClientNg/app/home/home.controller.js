@@ -12,7 +12,7 @@
 		activate();
 
 		function activate() {
-		    eventsService.getEvents().then(function(response) {
+		    eventsService.getEvents("NEWS").then(function(response) {
 		        vm.events = response;
 		    });
 		    vm.isUserWithRequiredRoleForFeature = accountService.isUserWithRequiredRoleForFeature;
