@@ -56,7 +56,7 @@ namespace WebApi.Controllers
 
         // PUT: api/Users/5
         [HttpPut]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutUser(int id, UserDto userDto)
         {
             if (!IsValidAuthorization(id, Request))
             {
@@ -67,11 +67,12 @@ namespace WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            if (id != userDto.Id)
             {
                 return BadRequest();
             }
-            _uow.Users.Update(user);
+            var user = _uow.Users.GetById(userDto.Id);
+            _uow.Users.Update(userDto.Map(user));
 
             try
             {
